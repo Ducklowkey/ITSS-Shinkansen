@@ -1,0 +1,56 @@
+.explore {
+    padding: 50px;
+  }
+  
+  .explore-item {
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Để ảnh xuống dòng khi không đủ chỗ */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+  }
+  
+  .image-container {
+    width: 20%; /* Mỗi phần tử chiếm 1/4 chiều rộng */
+    text-align: center;
+    background-color: #f4f4f4; /* Màu nền nhẹ cho các container */
+    border-radius: 8px; /* Góc bo tròn */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+    transition: transform 0.3s ease-in-out; /* Hiệu ứng khi hover */
+  }
+  
+  .image-container:hover {
+    transform: translateY(-10px); /* Di chuyển lên một chút khi hover */
+  }
+  
+  .icon {
+    width: 45%; /* Ảnh chiếm 100% chiều rộng của container */
+    height: auto;
+    border-radius: 8px; /* Bo tròn ảnh */
+  }
+  
+  strong {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  p {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  .menu-link {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .menu-link:hover {
+    text-decoration: underline;
+  }
+  
