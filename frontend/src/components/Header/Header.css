@@ -1,0 +1,47 @@
+.header {
+    height: 34vw; /* Chiều cao header */
+    margin: 30px auto;
+    background: url('/background.png') no-repeat; /* Nền header */
+    background-size: cover; /* Phủ kín vùng header */
+    background-position: center; /* Căn giữa hình ảnh nền */
+    display: flex; /* Dùng Flexbox để căn chỉnh nội dung */
+    align-items: center; /* Căn nội dung theo chiều dọc */
+    justify-content: center; /* Căn nội dung theo chiều ngang */
+    text-align: center; /* Văn bản nằm giữa */
+    position: relative;
+    color: black; /* Đổi màu chữ thành đen */
+}
+
+.header-contents {
+    max-width: 500px; /* Giới hạn chiều rộng nội dung */
+    padding: 20px; /* Thêm khoảng cách */
+    
+}
+
+.header h2 {
+    font-size: 4rem; /* Kích thước tiêu đề */
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1rem; /* Kích thước đoạn mô tả */
+    margin-bottom: 20px;
+
+}
+
+.header button {
+    font-size: 1rem;
+    padding: 10px 20px; /* Kích thước nút */
+    margin: 0 10px; /* Khoảng cách giữa các nút */
+    border: 1px solid black; /* Viền màu đen */
+    border-radius: 20px; /* Bo góc nút */
+    background: transparent; /* Nền trong suốt */
+    color: black; /* Màu chữ đen */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+.header button:hover {
+    background: rgb(229, 59, 59); /* Đổi màu nền khi hover */
+    color: white; /* Đổi màu chữ khi hover */
+}
