@@ -7,6 +7,10 @@ const Header = () => {
             <div className="header-contents">
                 <h2>ベトナムの味</h2>
                 <p>温かく居心地の良い料理の楽園で、魅力的な料理と忘れられない瞬間を発見してください。</p>
+                <div className="search-container">
+                  <input type="text" placeholder="検索..." />
+                  <button>検索</button>
+                </div>
                 <button>サインイン</button>
                 <button>サインアップ</button>
             </div>
