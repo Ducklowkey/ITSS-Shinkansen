@@ -1,6 +1,6 @@
 import React from 'react'
 import './DishDetail.css'
-import { assets } from '../../assets/assets'
+import { assets,restaurants,reviews } from '../../assets/assets'
 
 const DishDetail = () => {
     return (
@@ -94,7 +94,7 @@ const DishDetail = () => {
         <iframe 
             width="560" // Đặt chiều rộng của video
             height="315" // Đặt chiều cao của video
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Thay bằng URL video YouTube bạn muốn nhúng
+            src="https://www.youtube.com/embed/SQ1j8WkOUZM?si=xGD7sh9pS2LyvlHd" // Thay bằng URL video YouTube bạn muốn nhúng
             frameBorder="0" // Tùy chọn để không có viền
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" // Các quyền hạn sử dụng
             allowFullScreen // Cho phép xem toàn màn hình
@@ -105,9 +105,68 @@ const DishDetail = () => {
 
         <div className="restaurant">
             <h2 className="res-title">この料理で知られている有名な店</h2>
-            <p>この料理に興味があるなら、以下のレストランで試してみることをためらわないでください。</p>
+            <p className="res-description">この料理に興味があるなら、以下のレストランで試してみることをためらわないでください。</p>
+            <div className="res-suggest">
+                {restaurants.map((restaurant, index) => (
+                    <div key={index} className="card">
+                    <img src={restaurant.image} alt={restaurant.name} />
+                    <div className="card-content">
+                        <h3 className="card-title">{restaurant.name}</h3>
+                        <p className="card-address">Địa chỉ: {restaurant.address}</p>
+                        <p className="card-hotline">Hotline: {restaurant.hotline}</p>
+                    </div>
+                    </div>
+                ))}
+            </div>
         </div>
+   
+        <div className="review-container">
+            {/* Khu vực thêm đánh giá */}
+            <div className="add-review">
+                <img
+                src={assets.user1} 
+                alt="User Avatar"
+                className="user-avatar"
+                />
+                <div className="review-input">
+                <p>ここにレビューを追加してください</p>
+                </div>
+                <div className="review-stars">
+                {[...Array(5)].map((_, index) => (
+                    <span key={index} className="star">
+                    ★
+                    </span>
+                ))}
+                </div>
+            </div>
+
+            {/* Danh sách đánh giá */}
+            <div className="review-list">
+                {reviews.map((review, index) => (
+                <div key={index} className="review-item">
+                    <div className="review-header">
+                    <img src={review.avatar} alt={review.name} className="review-avatar" />
+                    <div>
+                        <p className="review-name">{review.name}</p>
+                        <p className="review-date">{review.date}</p>
+                    </div>
+                    </div>
+                    <p className="review-content">{review.content}</p>
+                    <div className="review-rating">
+                    {[...Array(review.rating)].map((_, index) => (
+                        <span key={index} className="star filled">
+                        ★
+                        </span>
+                    ))}
+                    </div>
+                </div>
+                ))}
+            </div>
+        </div>
+    
     </div>
+    
+    
     );
 }
 
