@@ -2,7 +2,7 @@ import React from 'react'
 import { assets } from '../../assets/assets'
 import './Search.css'
 
-const App = () => {
+const Search = () => {
   return (
     <div id="wrapper">
       <div id="header">
@@ -130,4 +130,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Search;
