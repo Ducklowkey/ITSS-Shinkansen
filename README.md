@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e1e4b8d (Update README.md)
 # ベトナムの味 (Hương Vị Việt Nam)
 
 ## Team: ITSS-Shinkansen
@@ -16,6 +19,9 @@
 - Step 2: Mở terminal chạy npm install
 - step 3: Chạy npm run dev  
 ---
+<<<<<<< HEAD
 =======
 #ITSS-Shinkansen Team
 >>>>>>> 69f8672 (Create README.md)
+=======
+>>>>>>> e1e4b8d (Update README.md)
