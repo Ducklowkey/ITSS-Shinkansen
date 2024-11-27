@@ -5,15 +5,7 @@ import './Search.css'
 const Search = () => {
   return (
     <div id="wrapper">
-      <div id="header">
-        <div id="logo" className="center">
-          <img src={assets.logo} alt="" />
-          <span>ベトナムの味</span>
-        </div>
-        <div id="login" className="center">
-          <a href="">サインアップ</a>
-        </div>
-      </div>
+      
       <div id="content">
         <div id="search-keyword">
           <form action="" className="center">
