@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate(); // Tạo hook điều hướng
 
   const handleSearch = () => {
-    navigate("/search"); // Điều hướng đến trang /search
+    navigate("/home"); // Điều hướng đến trang /home
   };
   return (
         <div className="header">

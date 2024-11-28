@@ -1,0 +1,403 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    user-select: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+div#header {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo img {
+    height: 56px;
+    width: 56px;
+    margin-right: 15px;
+}
+
+#logo span {
+    font-size: 42px;
+    font-weight: bold;
+    color: #474747;
+}
+
+#login a {
+    padding: 10px 30px;
+    color: #182226;
+    border-radius: 20px;
+    border: 1px solid #2C2F24;
+    font-weight: bold;
+    transition: all ease-in-out 0.3s;
+}
+
+#login a:hover {
+    background-color: #AD343E;
+    color: #FFFFFF;
+    border: 1px solid #AD343E;
+}
+
+div#content {
+    margin-top: 50px;
+    padding: 0px 100px;
+}
+
+#search-keyword form input {
+    height: 50px;
+    width: 670px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50px;
+    background-color: #D9D9D9;
+    outline-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 20px;
+}
+
+#search-keyword form button {
+    background-color: #FFFFFF;
+    border: none;
+    outline-style: none;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+#filter {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#list-filter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.filter-items {
+    flex-basis: 30%;
+    max-width: 30%;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-clear {
+    font-size: 12px;
+    color: #010F07;
+    cursor: pointer;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.filter-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F1F1;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0px 15px 15px 0px;
+    color: #010F07;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.filter-active {
+    background-color: #AD343E !important;
+    color: #FFFFFF !important;
+}
+
+.filter-cir{
+    height: 64px;
+    width: 64px;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    font-size: 16px !important;
+}
+
+#btn-filter{
+    margin-top: 30px;
+   
+}
+
+#btn-filter button{
+    border: none;
+    outline-style: none;
+    width: 335px;
+    height: 48px;
+    background: #AD343E;
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+#btn-filter button:hover{
+    background-color: #991a25;
+}
+
+div#list-products{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    user-select: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+div#header {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo img {
+    height: 56px;
+    width: 56px;
+    margin-right: 15px;
+}
+
+#logo span {
+    font-size: 42px;
+    font-weight: bold;
+    color: #474747;
+}
+
+#login a {
+    padding: 10px 30px;
+    color: #182226;
+    border-radius: 20px;
+    border: 1px solid #2C2F24;
+    font-weight: bold;
+    transition: all ease-in-out 0.3s;
+}
+
+#login a:hover {
+    background-color: #AD343E;
+    color: #FFFFFF;
+    border: 1px solid #AD343E;
+}
+
+div#content {
+    margin-top: 50px;
+    padding: 0px 100px;
+}
+
+#search-keyword form input {
+    height: 50px;
+    width: 670px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50px;
+    background-color: #D9D9D9;
+    outline-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 20px;
+}
+
+#search-keyword form button {
+    background-color: #FFFFFF;
+    border: none;
+    outline-style: none;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+#filter {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#list-filter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.filter-items {
+    flex-basis: 30%;
+    max-width: 30%;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-clear {
+    font-size: 12px;
+    color: #010F07;
+    cursor: pointer;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.filter-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F1F1;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0px 15px 15px 0px;
+    color: #010F07;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.filter-active {
+    background-color: #AD343E !important;
+    color: #FFFFFF !important;
+}
+
+.filter-cir{
+    height: 64px;
+    width: 64px;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    font-size: 16px !important;
+}
+
+#btn-filter{
+    margin-top: 30px;
+   
+}
+
+#btn-filter button{
+    border: none;
+    outline-style: none;
+    width: 335px;
+    height: 48px;
+    background: #AD343E;
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+#btn-filter button:hover{
+    background-color: #991a25;
+}
+
+div#list-products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột mỗi hàng */
+    gap: 20px; /* Khoảng cách giữa các món ăn */
+    margin-top: 30px; /* Khoảng cách từ trên xuống */
+}
+
+.product-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .product-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Hình ảnh món ăn */
+  .product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* Tên món ăn */
+  .productName {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  /* Giá món ăn */
+  .price {
+    font-size: 16px;
+    color: #17a2b8;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  /* Mô tả món ăn */
+  .desc {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Responsive - Đảm bảo hiển thị đẹp trên màn hình nhỏ */
+  /* Tối ưu responsive */
+@media (max-width: 1024px) {
+    div#list-products {
+        grid-template-columns: repeat(3, 1fr); /* 3 cột trên màn hình vừa */
+    }
+}
+
+@media (max-width: 768px) {
+    div#list-products {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên màn hình nhỏ */
+    }
+}
+
+@media (max-width: 480px) {
+    div#list-products {
+        grid-template-columns: 1fr; /* 1 cột trên màn hình cực kỳ nhỏ */
+    }
+}
