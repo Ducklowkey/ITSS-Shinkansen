@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import Landing from './pages/Landing/Landing'
 import DishDetail from './pages/DishDetail/DishDetail'
 import Home from './pages/Home/Home'
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/dish" element={<DishDetail />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

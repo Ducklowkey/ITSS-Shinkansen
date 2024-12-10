@@ -11,7 +11,9 @@ const Navbar = () => {
       <Link to="/home">
         <img src={assets.Logofull} alt="Logo" className="logo" />
       </Link>
-      <button>サインアップ</button>
+      <Link to="/login">
+        <button>サインアップ</button>
+      </Link>
     </div>
   )
 }

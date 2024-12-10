@@ -37,7 +37,8 @@ export const assets = {
     star0,
     star,
     comment,
-    user1
+    user1,
+    Search_alt_light
 
 }
 
