@@ -130,7 +130,7 @@ div#content {
     color: #FFFFFF !important;
 }
 
-.filter-cir{
+.filter-cir {
     height: 64px;
     width: 64px;
     padding: 0 !important;
@@ -138,12 +138,12 @@ div#content {
     font-size: 16px !important;
 }
 
-#btn-filter{
+#btn-filter {
     margin-top: 30px;
-   
+
 }
 
-#btn-filter button{
+#btn-filter button {
     border: none;
     outline-style: none;
     width: 335px;
@@ -156,11 +156,11 @@ div#content {
     transition: all ease-in-out 0.3s;
 }
 
-#btn-filter button:hover{
+#btn-filter button:hover {
     background-color: #991a25;
 }
 
-div#list-products{
+div#list-products {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -298,7 +298,7 @@ div#content {
     color: #FFFFFF !important;
 }
 
-.filter-cir{
+.filter-cir {
     height: 64px;
     width: 64px;
     padding: 0 !important;
@@ -306,12 +306,12 @@ div#content {
     font-size: 16px !important;
 }
 
-#btn-filter{
+#btn-filter {
     margin-top: 30px;
-   
+
 }
 
-#btn-filter button{
+#btn-filter button {
     border: none;
     outline-style: none;
     width: 335px;
@@ -324,66 +324,84 @@ div#content {
     transition: all ease-in-out 0.3s;
 }
 
-#btn-filter button:hover{
+#btn-filter button:hover {
     background-color: #991a25;
 }
 
 div#list-products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cột mỗi hàng */
-    gap: 20px; /* Khoảng cách giữa các món ăn */
-    margin-top: 30px; /* Khoảng cách từ trên xuống */
+    grid-template-columns: repeat(4, 1fr); /* Tự động căn số cột theo kích thước màn hình */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    margin-top: 30px;
+    justify-content: center; /* Căn giữa hàng cuối cùng nếu thiếu sản phẩm */
 }
 
 .product-item {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .product-item:hover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; /* Cố định chiều cao sản phẩm */
+    box-sizing: border-box;
+}
+
+
+.product-item:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Hình ảnh món ăn */
-  .product-img {
+}
+
+/* Hình ảnh món ăn */
+.product-img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 150%;
+    overflow: hidden;
+    /* Ẩn phần ảnh vượt ra ngoài container */
     border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  /* Tên món ăn */
-  .productName {
+}
+
+.product-img img {
+    width: 100%;
+    /* Chiều rộng 100% container */
+    height: 100%;
+    /* Chiều cao 100% container */
+    object-fit: cover;
+    /* Cắt gọn ảnh nếu không khớp */
+    border-radius: 8px;
+    /* Làm tròn các góc */
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
+    align-items: center; /* Căn giữa nội dung */
+}
+/* Tên món ăn */
+.productName {
     font-size: 18px;
     font-weight: bold;
     margin: 5px 0;
-  }
-  
-  /* Giá món ăn */
-  .price {
+}
+
+/* Giá món ăn */
+.price {
     font-size: 16px;
     color: #17a2b8;
     font-weight: bold;
-    margin: 5px 0;
-  }
-  
-  /* Mô tả món ăn */
-  .desc {
+    margin: 10px 0; /* Thêm khoảng cách trên/dưới giá */
+    text-align: center;
+    display: block; /* Đảm bảo xuống dòng */
+}
+
+/* Mô tả món ăn */
+.product-description {
     font-size: 14px;
     color: #555;
-    margin: 5px 0;
-  }
-  
-  /* Responsive - Đảm bảo hiển thị đẹp trên màn hình nhỏ */
-  /* Tối ưu responsive */
+    margin-top: 5px;
+    text-align: center; /* Căn giữa mô tả */
+}
+
+/* Responsive - Đảm bảo hiển thị đẹp trên màn hình nhỏ */
+/* Tối ưu responsive */
 @media (max-width: 1024px) {
     div#list-products {
         grid-template-columns: repeat(3, 1fr); /* 3 cột trên màn hình vừa */
