@@ -1,37 +1,73 @@
-
+/* Phần chính của món ăn */
 .dish-card {
-    display: flex;
-    flex-direction: column; /* Đặt tên món ăn ở trên */
-    margin: auto;
-    
-   
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
 }
+
+/* Header bao gồm tên món ăn và các nút */
+.dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  
+}
+
+.back-button, .favorite-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.back-button:hover, .favorite-button:hover {
+  transform: scale(1.2); /* Hiệu ứng phóng to khi di chuột */
+}
+
 .dish-name {
-    font-size: 2.5rem;
-    margin: 16px;
-    text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
 }
 
+/* Đảm bảo các nút không chồng lên tên món ăn */
+.back-button {
+  margin-right: auto;
+}
+
+.favorite-button {
+  margin-left: auto;
+  color: red;
+  font-size: 1.8rem;
+}
+
+/* Các phần nội dung bên dưới */
 .dish-content {
-    display: flex;  /* Chia layout thành 2 cột: Hình ảnh và Thông tin */
-    gap: 16px;
-    padding: 16px;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
 }
 
+/* Hình ảnh món ăn */
 .dish-image img {
-    width: 500px;
-    height: auto;
-    object-fit: cover;
+  width: 500px;
+  height: auto;
+  object-fit: cover;
 }
 
+/* Thông tin món ăn */
 .dish-info {
-    flex-grow: 1;
-    background-color: #fdfdfd;
-    padding: 16px;
-    
+  flex-grow: 1;
+  background-color: #fdfdfd;
+  padding: 16px;
 }
+
 
 .dish-details {
     display: flex;

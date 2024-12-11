@@ -4,9 +4,17 @@ import { assets,restaurants,reviews } from '../../assets/assets'
 
 const DishDetail = () => {
     return (
-        <div className="dish-card">
-          <h2 className="dish-name">Bún Chả HaNoi</h2>  {/* Tên món ăn lên trên */}
-          
+      <div className="dish-card">
+      {/* Header với nút Quay lại và nút Yêu thích */}
+      <div className="dish-header">
+          <button className="back-button" onClick={() => window.history.back()}>
+              ⬅️ {/* Biểu tượng quay lại */}
+          </button>
+          <h2 className="dish-name">Bún Chả HaNoi</h2>
+          <button className="favorite-button">
+              ❤️ {/* Biểu tượng yêu thích */}
+          </button>
+      </div>
           <div className="dish-content">
             <div className="dish-image">
               <img 
