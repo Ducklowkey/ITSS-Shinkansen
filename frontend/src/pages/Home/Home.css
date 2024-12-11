@@ -343,6 +343,9 @@ div#list-products {
     justify-content: space-between;
     height: 300px; /* Cố định chiều cao sản phẩm */
     box-sizing: border-box;
+    border: 2px solid #ddd; /* Thêm viền màu đỏ */
+    border-radius: 8px; /* Bo góc cho viền */
+    padding: 10px; /* Khoảng cách bên trong */
 }
 
 

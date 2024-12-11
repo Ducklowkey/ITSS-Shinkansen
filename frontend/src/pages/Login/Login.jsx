@@ -21,21 +21,20 @@ const Login = () => {
         <div className="login-form">
           <div className="logo">
             <img src={assets.Logofull} alt="Logo" />
-            <h2>ベトナムの味</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <i className="fa-solid fa-user icon"></i>
+              <img src = {assets.user_icon} alt="user-icon" />
               <input 
                 type="email" 
-                placeholder="メールまたはユーザー名"
+                placeholder="メールアドレス／ユーザー名"
                 value={email}
                 onChange={handleEmailChange}
                 required
               />
             </div>
             <div className="input-group">
-              <i className="fa-solid fa-lock icon"></i>
+            <img src = {assets.Password_icon} alt="pass-icon" />
               <input 
                 type="password" 
                 placeholder="パスワード"
@@ -44,12 +43,27 @@ const Login = () => {
                 required
               />
             </div>
+            <a href="/forgot-password" className="forgot-password">パスワードをお忘れの方</a> 
             <button type="submit" className="login-btn">ログイン</button>
           </form>
+          <div className="social-login-prompt">
+            <span></span>
+            <p>こちらもご利用いただけます</p>
+            <span></span>
+          </div>
           <div className="social-login">
-            <button className="social-btn">Facebook</button>
-            <button className="social-btn">Twitter</button>
-            <button className="social-btn">Telegram</button>
+            <a href="https://www.facebook.com" className="social-btn">
+              <img src={assets.Fb} alt="Facebook" />
+            </a>
+            <a href="https://www.twitter.com" className="social-btn">
+              <img src={assets.Twitter} alt="Twitter" />
+            </a>
+            <a href="https://www.telegram.org" className="social-btn">
+              <img src={assets.Tele} alt="Telegram" />
+            </a>
+          </div>
+          <div className="account-link">
+            <p>アカウントが未登録？ <a href="/sign-up">アカウントの作成</a></p>
           </div>
         </div>
       </div>
