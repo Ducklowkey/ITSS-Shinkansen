@@ -121,7 +121,7 @@ const SignUp = () => {
                         <button type="submit" className="signup-btn">サインアップ</button>
                     </form>
                     <div className="account-link">
-                        <p>新しいアカウントを作成？ <a href="/sign-up">ログイン</a></p>
+                        <p>新しいアカウントを作成？ <a href="/login">ログイン</a></p>
                     </div>
                 </div>
             </div>
