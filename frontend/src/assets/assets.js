@@ -25,6 +25,12 @@ import Search from './Search.png'
 import Tele from './Tele.png'
 import Fb from './fb.png'
 import Twitter from './Twitter.png'
+import Calendar from './Calendar_icon.png'
+import Gender from './Gender_icon.png'
+import Key from './Key_icon.png'
+import Mail from './Mail_icon.png'
+import Name from './Name_icon.png'
+import Phone from './Phone_icon.png'
 
 export const assets = {
     logo,
@@ -49,7 +55,13 @@ export const assets = {
     Search,
     Fb,
     Tele,
-    Twitter
+    Twitter,
+    Calendar,
+    Gender,
+    Key,
+    Mail,
+    Name,
+    Phone
 }
 
 export const restaurants = [

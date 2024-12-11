@@ -1,0 +1,109 @@
+/* Toàn bộ các lớp được đặt trong lớp cha `.signup` để scoped */
+.signup {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(90deg, #e06666 0%, #f5d1d1 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .signup .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signup .signup-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+    width: 400px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .signup .logo img {
+    width: auto;
+    height: 45px;
+    margin-bottom: 40px;
+  }
+  
+  .signup h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .signup .input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 320px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #a19f9d; /* Viền dưới cho cả input và icon */
+    padding-bottom: 5px; /* Tạo khoảng cách giữa nội dung và viền dưới */
+  }
+  
+  .signup .input-group input {
+    width: 100%; /* Chiều rộng của input chiếm toàn bộ chiều rộng của input group */
+    padding: 0 10px; /* Giảm padding bên trái và phải, chỉ để padding trên/dưới */
+    border: none; /* Xóa bỏ toàn bộ viền */
+    font-size: 18px; /* Cỡ chữ của nội dung nhập vào */
+    background-color: transparent; /* Giữ nền trong suốt */
+  }
+  
+  /* Đổi màu viền dưới khi input bên trong được focus */
+  .signup .input-group:focus-within {
+    border-bottom: 2px solid #e06666; /* Màu viền nổi bật khi nhấn */
+    transition: border-color 0.3s ease; /* Hiệu ứng mượt mà khi chuyển đổi */
+  }
+  
+  .signup .input-group input:focus {
+    outline: none; /* Bỏ viền mặc định của trình duyệt */
+  }
+  
+  .signup .input-group .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .signup .signup-btn {
+    background: linear-gradient(270deg, #e06666 0%, #f5d1d1 100%);
+    color: white;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .signup .signup-btn:hover {
+    background-color: #e55050;
+  }
+
+  .signup .account-link p {
+    text-align: center; /* Căn giữa dòng chữ */
+    font-size: 16px; /* Kích thước chữ nhỏ */
+    color: #666; /* Màu chữ xám nhạt */
+    margin-top: 15px; /* Khoảng cách với các icon */
+  }
+  
+  .signup .account-link a {
+    color: #e06666;
+    text-decoration: none; 
+    font-weight: bold; 
+  }
+  
+  .signup .account-link a:hover {
+    text-decoration: underline; /* Hiệu ứng gạch chân khi hover */
+  }
+  
