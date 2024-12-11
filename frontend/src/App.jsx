@@ -14,10 +14,10 @@ function App() {
       {/* Ẩn Navbar nếu đang ở đường dẫn "/login" */}
       {location.pathname !== '/login' && <Navbar />}
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Landing />} />
         <Route path="/dish" element={<DishDetail />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
