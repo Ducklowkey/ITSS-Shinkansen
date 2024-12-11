@@ -1,6 +1,6 @@
 .header {
     height: 34vw; /* Chiều cao header */
-    margin: 30px auto;
+    margin: auto;
     background: url('/background.png') no-repeat; /* Nền header */
     background-size: cover; /* Phủ kín vùng header */
     background-position: center; /* Căn giữa hình ảnh nền */
@@ -15,8 +15,43 @@
 .header-contents {
     max-width: 500px; /* Giới hạn chiều rộng nội dung */
     padding: 20px; /* Thêm khoảng cách */
-    
 }
+
+.search-container {
+    display: flex; /* Dùng Flexbox */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+.search-btn {
+    height: 50px;
+    border: 1px solid black; /* Viền màu đen */
+    border-radius: 20px; 
+    background: transparent;
+}
+
+.search-btn img {
+    width: 30px; /* Tăng kích thước chiều rộng của icon */
+    height: auto; /* Tăng kích thước chiều cao của icon */
+    display: block; /* Đảm bảo ảnh được hiển thị dưới dạng khối */
+    margin: 0 auto; /* Căn giữa ảnh bên trong nút */  
+}
+
+.search-btn:hover {
+    background: rgb(229, 59, 59); /* Đổi màu nền khi hover */
+    color: white; /* Đổi màu chữ khi hover */
+}
+
+.search-container input {
+    width: 400px; /* Chiều rộng cố định cho ô input */
+    height: 50px;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-size: 1rem;
+    flex: 1;
+}
+
 
 .header h2 {
     font-size: 4rem; /* Kích thước tiêu đề */
@@ -30,14 +65,7 @@
 }
 
 .header button {
-    font-size: 1rem;
     padding: 10px 20px; /* Kích thước nút */
-    margin: 0 10px; /* Khoảng cách giữa các nút */
-    border: 1px solid black; /* Viền màu đen */
-    border-radius: 20px; /* Bo góc nút */
-    background: transparent; /* Nền trong suốt */
-    color: black; /* Màu chữ đen */
-    cursor: pointer;
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
 }
 
