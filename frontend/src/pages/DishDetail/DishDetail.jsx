@@ -8,11 +8,17 @@ const DishDetail = () => {
       {/* Header với nút Quay lại và nút Yêu thích */}
       <div className="dish-header">
           <button className="back-button" onClick={() => window.history.back()}>
-              ⬅️ {/* Biểu tượng quay lại */}
+          <img 
+                src={assets.arrow_back}
+                alt="Back" 
+              /> {/* Biểu tượng quay lại */}
           </button>
           <h2 className="dish-name">Bún Chả HaNoi</h2>
           <button className="favorite-button">
-              ❤️ {/* Biểu tượng yêu thích */}
+          <img 
+                src={assets.bookmark}
+                alt="favor" 
+              /> {/* Biểu tượng yêu thích */}
           </button>
       </div>
           <div className="dish-content">

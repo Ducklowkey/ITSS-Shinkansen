@@ -19,6 +19,14 @@ import star from './Star.png'
 import star0 from './star0.png'
 import comment from './comment.png'
 import user1 from './user1.png'
+import bookmark from './bookmark.png'
+import header_user from './header-user.png'
+import user_icon from './user_icon.png'
+import Password_icon from './Password_icon.png'
+import Search from './Search.png'
+import Tele from './Tele.png'
+import Fb from './fb.png'
+import Twitter from './Twitter.png'
 
 export const assets = {
     logo,
@@ -37,7 +45,16 @@ export const assets = {
     star0,
     star,
     comment,
-    user1
+    user1,
+    bookmark,
+    header_user,
+    user_icon,
+    Password_icon,
+    Search,
+    Fb,
+    Tele,
+    Twitter
+
 
 }
 

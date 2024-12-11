@@ -7,7 +7,7 @@
  
  .navbar .logo {
      width: 200px; /* Kích thước logo */
-     margin-left: 20px;
+     margin-left: 40px;
  }
  
  .navbar button {
@@ -19,10 +19,13 @@
      border-radius: 50px;
      cursor: pointer;
      transition: 0.3s;
-     margin-right: 20px;
+     margin-right: 40px;
  }
  
  .navbar button:hover {
      background-color: #b2bde2;
  }
- 
+ .navbar .profile-pic {
+    margin-right: 30px;
+    width: 80px;
+ }
