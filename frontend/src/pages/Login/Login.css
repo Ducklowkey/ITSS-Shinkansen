@@ -1,97 +1,96 @@
-/* src/styles/login.css */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9dcdc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-form {
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .logo img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px 30px;
-    border-radius: 20px;
-    border: 1px solid #a19f9d;
-    font-size: 16px;
-  }
-  
-  .input-group .icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .login-btn {
-    background-color: #ff5f5f;
-    color: white;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .login-btn:hover {
-    background-color: #e55050;
-  }
-  
-  .social-login {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .social-btn {
-    width: 48%;
-    padding: 10px;
-    background-color: #3b5998;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
-  .social-btn:hover {
-    background-color: #2d4373;
-  }
-  
+/* Toàn bộ các lớp được đặt trong lớp cha `.login` để scoped */
+.login {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9dcdc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login .login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .login-form {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login .logo img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.login h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login .input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login .input-group input {
+  width: 100%;
+  padding: 10px 30px;
+  border-radius: 20px;
+  border: 1px solid #a19f9d;
+  font-size: 16px;
+}
+
+.login .input-group .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login .login-btn {
+  background-color: #ff5f5f;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login .login-btn:hover {
+  background-color: #e55050;
+}
+
+.login .social-login {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.login .social-btn {
+  width: 48%;
+  padding: 10px;
+  background-color: #3b5998;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.login .social-btn:hover {
+  background-color: #2d4373;
+}

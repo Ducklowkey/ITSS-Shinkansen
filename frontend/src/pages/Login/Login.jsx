@@ -16,39 +16,41 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <div className="logo">
-        <img src={assets.Logofull} alt="Logo" />
-          <h2>ベトナムの味</h2>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <i className="fa-solid fa-user icon"></i>
-            <input 
-              type="email" 
-              placeholder="メールまたはユーザー名"
-              value={email}
-              onChange={handleEmailChange}
-              required
-            />
+    <div className="login"> {/* Lớp cha là 'login' */}
+      <div className="login-container">
+        <div className="login-form">
+          <div className="logo">
+            <img src={assets.Logofull} alt="Logo" />
+            <h2>ベトナムの味</h2>
           </div>
-          <div className="input-group">
-            <i className="fa-solid fa-lock icon"></i>
-            <input 
-              type="password" 
-              placeholder="パスワード"
-              value={password}
-              onChange={handlePasswordChange}
-              required
-            />
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <i className="fa-solid fa-user icon"></i>
+              <input 
+                type="email" 
+                placeholder="メールまたはユーザー名"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <i className="fa-solid fa-lock icon"></i>
+              <input 
+                type="password" 
+                placeholder="パスワード"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+            </div>
+            <button type="submit" className="login-btn">ログイン</button>
+          </form>
+          <div className="social-login">
+            <button className="social-btn">Facebook</button>
+            <button className="social-btn">Twitter</button>
+            <button className="social-btn">Telegram</button>
           </div>
-          <button type="submit" className="login-btn">ログイン</button>
-        </form>
-        <div className="social-login">
-          <button className="social-btn">Facebook</button>
-          <button className="social-btn">Twitter</button>
-          <button className="social-btn">Telegram</button>
         </div>
       </div>
     </div>
