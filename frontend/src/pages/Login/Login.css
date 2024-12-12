@@ -74,6 +74,24 @@
   transform: translateY(-50%);
 }
 
+.login .forgot-password {
+  display: block; /* Hiển thị như một dòng riêng */
+  text-align: right; /* Căn lề phải */
+  width: 300px; /* Độ rộng khớp với input-group */
+  font-size: 16px; /* Kích thước chữ nhỏ hơn */
+  color: #e06666; /* Màu chữ xám nhạt */
+  margin-bottom: 10px; /* Khoảng cách với nút đăng nhập */
+  text-decoration: none; /* Bỏ gạch chân mặc định */
+  cursor: pointer; /* Thêm hiệu ứng con trỏ */
+  transition: color 0.3s ease; /* Hiệu ứng hover */
+  font-weight: bold;
+}
+
+.login .forgot-password:hover {
+  text-decoration: underline; /* Hiệu ứng gạch chân khi hover */
+}
+
+
 .login .login-btn {
   background: linear-gradient(270deg, #e06666 0%, #f5d1d1 100%);
   color: white;
@@ -88,4 +106,67 @@
 
 .login .login-btn:hover {
   background-color: #e55050;
+}
+
+.login .social-login-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0; /* Giảm khoảng cách trên và dưới dòng chữ */
+}
+
+.login .social-login-prompt p {
+  margin: 0 10px; /* Khoảng cách giữa gạch ngang và dòng chữ */
+  padding: 20px 0px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.login .social-login-prompt span {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.login .social-login {
+  display: flex;
+  justify-content: space-evenly; /* Căn đều khoảng cách giữa các icon */
+  width: 100%;
+}
+
+.login .social-login a {
+  width: 40px; /* Thay đổi width để chỉ bao quanh icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0; /* Bỏ padding nếu có */
+}
+
+.login .social-login a img {
+  width: 100%; /* Đảm bảo icon có độ rộng chiếm toàn bộ thẻ a */
+  height: auto;
+}
+
+
+.login .account-link p {
+  text-align: center; /* Căn giữa dòng chữ */
+  font-size: 16px; /* Kích thước chữ nhỏ */
+  color: #666; /* Màu chữ xám nhạt */
+  margin-top: 30px; /* Khoảng cách với các icon */
+}
+
+.login .account-link a {
+  color: #e06666;
+  text-decoration: none; 
+  font-weight: bold; 
+}
+
+.login .account-link a:hover {
+  text-decoration: underline; /* Hiệu ứng gạch chân khi hover */
 }
