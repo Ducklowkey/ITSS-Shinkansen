@@ -8,15 +8,17 @@ import Login from './pages/Login/Login';
 import User from './pages/User/User';
 import Favorite from './pages/Favorite/Favorite'
 import SignUp from './pages/SignUp/SignUp';
+import Admin_login from './pages/Admin_login/Admin_login';
 
 function App() {
   const location = useLocation(); // Lấy đường dẫn hiện tại
 
   return (
     <div className="app">
-      {/* Ẩn Navbar nếu đang ở đường dẫn "/login" */}
-      {location.pathname !== '/login' && location.pathname !== '/sign-up' && <Navbar />}
+      {/* Ẩn Navbar */}
+      {location.pathname !== '/login' && location.pathname !== '/sign-up' && location.pathname !== '/ad-login' && <Navbar />}
       <Routes>
+        <Route path="/ad-login" element={<Admin_login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/" element={<Landing />} />
