@@ -159,19 +159,24 @@ const DishDetail = () => {
                 {reviews.map((review, index) => (
                 <div key={index} className="review-item">
                     <div className="review-header">
-                    <img src={review.avatar} alt={review.name} className="review-avatar" />
-                    <div>
-                        <p className="review-name">{review.name}</p>
-                        <p className="review-date">{review.date}</p>
+                      <div className="review-rating">
+                      {[...Array(review.rating)].map((_, index) => (
+                          <span key={index} className="star filled">
+                          ★
+                          </span>
+                      ))}
+                      </div>
+
                     </div>
-                    </div>
+
                     <p className="review-content">{review.content}</p>
-                    <div className="review-rating">
-                    {[...Array(review.rating)].map((_, index) => (
-                        <span key={index} className="star filled">
-                        ★
-                        </span>
-                    ))}
+
+                    <div className="review-footer">
+                    <img src={review.avatar} alt={review.name} className="review-avatar" />
+                    <p className="review-name">{review.name}</p>
+                    <p className="review-date">{review.date}</p>
+                          
+                      
                     </div>
                 </div>
                 ))}
