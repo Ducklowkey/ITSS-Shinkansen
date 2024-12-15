@@ -137,6 +137,7 @@ const DishDetail = () => {
         <div className="review-container">
             {/* Khu vực thêm đánh giá */}
           <div className="add-review">
+            <div className="add-review-header">
             <img
               src={assets.user1}
               alt="User Avatar"
@@ -147,6 +148,7 @@ const DishDetail = () => {
                 type="text"
                 placeholder="ここにレビューを追加してください"
               />
+            </div>
             </div>
             <div className="review-stars">
               {[...Array(5)].map((_, index) => (

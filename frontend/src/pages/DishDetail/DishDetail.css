@@ -212,7 +212,7 @@
 .review-container {
     background-color: #3c3c3c;
     color: #fff;
-    padding: 20px;
+    padding: 20px 20px 20px 30px;
     font-family: Arial, sans-serif;
     display: flex;
   }
@@ -220,10 +220,16 @@
   /* Khu vực thêm đánh giá */
   .add-review {
     display: flex;
-    align-items: center;
+    justify-content: center;
     margin-bottom: 30px;
     flex:1;
     flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .add-review-header {
+    display: flex;
+    align-items: center;
   }
   
   .user-avatar {
@@ -236,15 +242,47 @@
   .review-input {
     background-color: #fff;
     color: #aaa;
-    padding: 15px;
+    padding: 30px;
     border-radius: 10px;
     flex: 1;
     margin-right: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .review-input input {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của phần tử cha */
+    height: 80px; /* Tăng chiều cao cho input */
+    padding: 10px 15px; /* Tăng khoảng cách bên trong để text dễ nhìn */
+    font-size: 18px; /* Tăng kích thước chữ */
+    border: 1px solid #ccc; /* Viền mỏng */
+    border-radius: 10px; /* Góc bo tròn */
+    background-color: #fff; /* Màu nền trắng */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    outline: none; /* Loại bỏ viền khi focus */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà khi tương tác */
+  }
+  
+  .review-input input:focus {
+    border-color: #007bff; /* Màu viền xanh khi input được focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Hiệu ứng ánh sáng khi focus */
+  }
+
+  .review-input::before {
+    content: ''; /* Bắt buộc phải có */
+    position: absolute;
+    top: 20px; /* Điều chỉnh vị trí theo chiều dọc */
+    left: -10px; /* Điều chỉnh vị trí ngang để tam giác ở ngoài box */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; /* Cạnh trên của tam giác */
+    border-bottom: 10px solid transparent; /* Cạnh dưới của tam giác */
+    border-right: 10px solid #fff; /* Màu tam giác khớp với màu nền của box */
   }
   
   .review-stars {
     display: flex;
+    margin: 10px 75px ;
   }
   
   .star {
@@ -271,16 +309,17 @@
   .review-header {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 10px 20px;
   }
 
   .review-footer {
     display: flex;
+    margin: 0px 20px;
   }
   
   .review-avatar {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     margin-right: 15px;
   }
@@ -300,7 +339,7 @@
   .review-content {
     font-size: 14px;
     line-height: 1.6;
-    margin: 20px 0;
+    margin: 20px 20px 40px 20px;
     color: #fff;
   }
   
