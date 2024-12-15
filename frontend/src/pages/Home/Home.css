@@ -195,6 +195,11 @@ span {
     align-items: center;
 }
 
+.search-full-icon{
+    height: 60px;
+    width: 60px;
+}
+
 a {
     text-decoration: none;
 }
