@@ -136,23 +136,27 @@ const DishDetail = () => {
    
         <div className="review-container">
             {/* Khu vực thêm đánh giá */}
-            <div className="add-review">
-                <img
-                src={assets.user1} 
-                alt="User Avatar"
-                className="user-avatar"
-                />
-                <div className="review-input">
-                <p>ここにレビューを追加してください</p>
-                </div>
-                <div className="review-stars">
-                {[...Array(5)].map((_, index) => (
-                    <span key={index} className="star">
-                    ★
-                    </span>
-                ))}
-                </div>
+          <div className="add-review">
+            <img
+              src={assets.user1}
+              alt="User Avatar"
+              className="user-avatar"
+            />
+            <div className="review-input">
+              <input
+                type="text"
+                placeholder="ここにレビューを追加してください"
+              />
             </div>
+            <div className="review-stars">
+              {[...Array(5)].map((_, index) => (
+                <span key={index} className="star">
+                  ★
+                </span>
+              ))}
+            </div>
+          </div>
+
 
             {/* Danh sách đánh giá */}
             <div className="review-list">
