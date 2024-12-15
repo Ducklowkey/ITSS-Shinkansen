@@ -9,6 +9,8 @@ import User from './pages/User/User';
 import Favorite from './pages/Favorite/Favorite'
 import SignUp from './pages/SignUp/SignUp';
 
+
+
 function App() {
   const location = useLocation(); // Lấy đường dẫn hiện tại
 

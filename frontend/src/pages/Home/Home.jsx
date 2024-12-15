@@ -32,9 +32,13 @@ const Home = () => {
           </form>
         </div>
         <form id="filter">
-          <h3>
+          <h3 className='filter-header'>
             フィルター <i className="fa-solid fa-magnifying-glass"></i>
+            <img src={assets.Search1} alt="Search Icon" className="search-icon" />
           </h3>
+
+
+
           <div id="list-filter">
             {/* Category Filter */}
             <div className="filter-items">

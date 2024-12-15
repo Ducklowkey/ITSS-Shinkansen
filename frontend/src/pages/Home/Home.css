@@ -84,6 +84,14 @@ div#content {
     margin-bottom: 100px;
 }
 
+.filter-header{
+    margin: 10px 0px;
+}
+
+#filter img {
+    margin-left: 5px;
+}
+
 #list-filter {
     display: flex;
     justify-content: space-between;
@@ -93,17 +101,21 @@ div#content {
 .filter-items {
     flex-basis: 30%;
     max-width: 30%;
+    margin-right: 20px;
 }
 
 .filter-title {
     display: flex;
     justify-content: space-between;
+    margin-right: 50px;
 }
 
 .filter-clear {
     font-size: 12px;
     color: #010F07;
     cursor: pointer;
+    /* margin-right: 120px; */
+
 }
 
 .filter-options {
@@ -113,13 +125,15 @@ div#content {
 }
 
 .filter-option {
+    min-width: 110px;
+    max-width: 115px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #F1F1F1;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 10px;
-    margin: 0px 15px 15px 0px;
+    margin: 0px 20px 20px 0px;
     color: #010F07;
     font-size: 12px;
     cursor: pointer;
@@ -275,24 +289,6 @@ div#content {
     cursor: pointer;
 }
 
-.filter-options {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
-
-.filter-option {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #F1F1F1;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 0px 15px 15px 0px;
-    color: #010F07;
-    font-size: 12px;
-    cursor: pointer;
-}
 
 .filter-active {
     background-color: #AD343E !important;
