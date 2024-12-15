@@ -25,6 +25,7 @@ import user_icon from './user_icon.png'
 import Password_icon from './Password_icon.png'
 import Search from './Search.png'
 import Search1 from './Search1.png'
+import Search2 from './Search2.png'
 import Tele from './Tele.png'
 import Fb from './fb.png'
 import Twitter from './Twitter.png'
@@ -56,6 +57,7 @@ export const assets = {
     Tele,
     Twitter,
     Search1,
+    Search2,
 
 
 }
