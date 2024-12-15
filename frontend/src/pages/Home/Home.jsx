@@ -27,7 +27,7 @@ const Home = () => {
           <form action="" className="center">
             <input type="text" placeholder="キーワードを入力して" />
             <button>
-              <i className="fa-solid fa-magnifying-glass"></i>
+            <img src={assets.Search2} alt="Search Icon" className="search-full-icon" />
             </button>
           </form>
         </div>
