@@ -101,7 +101,6 @@ div#content {
 .filter-items {
     flex-basis: 30%;
     max-width: 30%;
-    margin-right: 20px;
 }
 
 .filter-title {
@@ -174,11 +173,6 @@ div#content {
     background-color: #991a25;
 }
 
-div#list-products {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 
 body {
     margin: 0;
@@ -331,19 +325,25 @@ div#content {
 }
 
 div#list-products {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Tự động căn số cột theo kích thước màn hình */
-    gap: 20px; /* Khoảng cách giữa các sản phẩm */
-    margin-top: 30px;
-    justify-content: center; /* Căn giữa hàng cuối cùng nếu thiếu sản phẩm */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    /* margin-top: 30px;
+    justify-content: center; Căn giữa hàng cuối cùng nếu thiếu sản phẩm */ 
 }
 
 .product-item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 300px; /* Cố định chiều cao sản phẩm */
+
     box-sizing: border-box;
+    border: 0.1px solid rgba(219,223,208,1);
+    border-radius: 5%;
+    height: 300px; 
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 
@@ -400,6 +400,7 @@ div#list-products {
     color: #555;
     margin-top: 5px;
     text-align: center; /* Căn giữa mô tả */
+    margin-bottom: 10px;
 }
 
 /* Responsive - Đảm bảo hiển thị đẹp trên màn hình nhỏ */
