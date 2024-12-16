@@ -107,7 +107,7 @@ div#content {
 .filter-title {
     display: flex;
     justify-content: space-between;
-    margin-right: 50px;
+    margin-right: 90px;
 }
 
 .filter-clear {
