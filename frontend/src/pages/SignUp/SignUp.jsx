@@ -124,15 +124,21 @@ const SignUp = () => {
                             />
                         </div>
                         <div className="input-group">
+                            <img src={assets.Calendar} />
                             <input
                                 type="date"
                                 placeholder="生年月日"
                                 value={dob}
+                                onMouseDown={(e) => {
+                                    e.preventDefault(); // Ngăn mặc định để lịch không bị ẩn
+                                    e.target.showPicker(); // Buộc hiển thị lịch
+                                }}
                                 onChange={handleDobChange}
                                 required
                             />
                         </div>
                         <div className="input-group gender-group">
+                            <img src={assets.Gender} />
                             <select value={gender} onChange={handleGenderChange} required>
                                 <option value="">性別を選択</option>
                                 <option value="male">男性</option>
