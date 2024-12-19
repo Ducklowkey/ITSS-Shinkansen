@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext'; // Import useAuth từ context
 import { assets } from '../../assets/assets';
 import './login.css'; // Nhúng file CSS
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,14 +14,29 @@ const Login = () => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Đặt trạng thái đăng nhập mà không kiểm tra mật khẩu
-    setIsLoggedIn(true);
-    localStorage.setItem('isLoggedIn', 'true');
-    // Chuyển hướng đến trang home
-    navigate('/home');
+  
+    try {
+      // Gửi thông tin email và password đến API login
+      const response = await axios.post('http://localhost:3000/auth/login', {
+        email,
+        password,
+      });
+  
+
+      if (response.status === 200) {
+        const { token } = response.data; // Backend trả về token
+        localStorage.setItem('token', token); // Lưu token vào localStorage
+        setIsLoggedIn(true); // Cập nhật trạng thái đăng nhập
+        navigate('/home'); // Chuyển hướng đến trang home
+      }
+    } catch (error) {
+      console.error('Login failed:', error.response?.data?.message || error.message);
+      alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin đăng nhập.');
+    }
   };
+  
 
   return (
     <div className="login"> {/* Lớp cha là 'login' */}
