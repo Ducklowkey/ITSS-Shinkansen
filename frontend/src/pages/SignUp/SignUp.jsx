@@ -72,7 +72,7 @@ const SignUp = () => {
                             />
                         </div>
                         <div className="input-group">
-                            <img src={assets.Key} />
+                            <img src={assets.Password_icon} />
                             <input
                                 type="password"
                                 placeholder="パスワード"
