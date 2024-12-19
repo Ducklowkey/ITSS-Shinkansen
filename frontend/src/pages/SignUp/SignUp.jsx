@@ -104,7 +104,7 @@ const SignUp = () => {
                             />
                         </div>
                         <div className="input-group">
-                            <img src={assets.Key} />
+                            <img src={assets.Password_icon} />
                             <input
                                 type="text"
                                 placeholder="パスワード"
@@ -139,8 +139,15 @@ const SignUp = () => {
                         </div>
                         <div className="input-group gender-group">
                             <img src={assets.Gender} />
-                            <select value={gender} onChange={handleGenderChange} required>
-                                <option value="">性別を選択</option>
+                            <select
+                                value={gender}
+                                onChange={(e) => {
+                                    handleGenderChange(e);
+                                    e.target.style.color = e.target.value ? 'black' : '#666';
+                                }}
+                                required
+                            >
+                                <option value="" disabled hidden>性別を選択</option>
                                 <option value="male">男性</option>
                                 <option value="female">女性</option>
                                 <option value="other">その他</option>

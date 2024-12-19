@@ -8,6 +8,7 @@ import Login from './pages/Login/Login';
 import User from './pages/User/User';
 import Favorite from './pages/Favorite/Favorite';
 import SignUp from './pages/SignUp/SignUp';
+import Admin_login from './pages/Admin_login/Admin_login';
 
 const App = () => {
   const location = useLocation(); // Lấy đường dẫn hiện tại
@@ -18,6 +19,7 @@ const App = () => {
       {!['/login', '/sign-up'].includes(location.pathname) && <Navbar />}
       <Routes>
         <Route path="/" element={<Landing />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/dish" element={<DishDetail />} />
