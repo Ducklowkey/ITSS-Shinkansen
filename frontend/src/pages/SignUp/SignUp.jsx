@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { assets } from '../../assets/assets';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.css'; // Nhúng file CSS
+import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL;
+console.log("API URL:", API_URL);
+
+
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const [displayName, setDisplayName] = useState(''); // Tên hiển thị
-    const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,7 +21,7 @@ const SignUp = () => {
     const [phone, setPhone] = useState(''); // Số điện thoại
 
     const handleDisplayNameChange = (e) => setDisplayName(e.target.value); // Tên hiển thị
-    const handleUsernameChange = (e) => setUsername(e.target.value);
+    const handleUsernameChange = (e) => setName(e.target.value);
     const handleEmailChange = (e) => setEmail(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
     const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
@@ -21,18 +29,42 @@ const SignUp = () => {
     const handleGenderChange = (e) => setGender(e.target.value); // Xử lý thay đổi giới tính
     const handlePhoneChange = (e) => setPhone(e.target.value); // Số điện thoại
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Display Name:', displayName);
-        console.log('Username:', username);
-        console.log('Email:', email);
-        console.log('Password:', password);
-        console.log('Confirm Password:', confirmPassword);
-        console.log('Date of Birth:', dob);
-        console.log('Gender:', gender);
-        console.log('Phone:', phone);
-    };
+   
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();    // Debug URL API
+
+        // if (password != confirmPassword) {
+        //     alert("Mật khẩu và xác nhận mật khẩu không khớp");
+        //     return;
+        // }
+    
+        try {
+            const response = await axios.post(`http://localhost:9002/auth/register`, {
+                name: name,
+                email: email,
+                password: password,
+            });
+            
+              
+            console.log("Response từ API:", response); // Debug response
+            if (response && response.data) {
+                navigate('/login');
+            } else {
+                alert("Không nhận được dữ liệu từ server");
+            }
+        } catch (error) {
+            console.error("Lỗi xảy ra:", error);
+    
+            if (error.response) {
+                console.log("Chi tiết lỗi từ server:", error.response.data);
+                alert(`Lỗi: ${error.response.data.message || "Server không phản hồi đúng định dạng"}`);
+            } else {
+                alert("Lỗi: Không thể kết nối tới server");
+            }
+        }
+    };
+    
     return (
         <div className="signup"> {/* Lớp cha là 'signup' */}
             <div className="signup-container">
@@ -56,7 +88,7 @@ const SignUp = () => {
                             <input
                                 type="text"
                                 placeholder="表示名"
-                                value={username}
+                                value={name}
                                 onChange={handleUsernameChange}
                                 required
                             />
@@ -74,7 +106,7 @@ const SignUp = () => {
                         <div className="input-group">
                             <img src={assets.Password_icon} />
                             <input
-                                type="password"
+                                type="text"
                                 placeholder="パスワード"
                                 value={password}
                                 onChange={handlePasswordChange}
@@ -131,7 +163,7 @@ const SignUp = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="signup-btn">サインアップ</button>
+                        <button type="submit" className="signup-btn" >サインアップ</button>
                     </form>
                     <div className="account-link">
                         <p>新しいアカウントを作成？ <a href="/login">ログイン</a></p>
