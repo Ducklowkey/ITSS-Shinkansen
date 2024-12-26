@@ -8,6 +8,7 @@ import axios from 'axios';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // Track loading state
   const { setIsLoggedIn } = useAuth(); // Lấy hàm setIsLoggedIn từ context
   const navigate = useNavigate(); // Hook để điều hướng
 
@@ -16,30 +17,27 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    try {
-      // Gửi thông tin email và password đến API login
-      const response = await axios.post(`http://localhost:9002/auth/login`, {
-        email,
-        password,
-      });
-  
+    setLoading(true); // Show loading state
 
-      if (response.status === 200) {
-        const { token } = response.data; // Backend trả về token
-        localStorage.setItem('token', token); // Lưu token vào localStorage
-        setIsLoggedIn(true); // Cập nhật trạng thái đăng nhập
-        navigate('/home'); // Chuyển hướng đến trang home
-      }
+    try {
+      const response = await axios.post('http://localhost:9002/auth/login', { email, password });
+
+      console.log(response); 
+        const { token } = response.data; 
+        localStorage.setItem('token', token); // Consider using secure cookies instead
+        setIsLoggedIn(true); 
+        navigate('/home'); 
+
     } catch (error) {
       console.error('Login failed:', error.response?.data?.message || error.message);
-      alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin đăng nhập.');
+      alert(error.response?.data?.message || 'ログインに失敗しました。もう一度お試しください。');
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
-  
 
   return (
-    <div className="login"> {/* Lớp cha là 'login' */}
+    <div className="login">
       <div className="login-container">
         <div className="login-form">
           <div className="logo">
@@ -67,7 +65,9 @@ const Login = () => {
               />
             </div>
             <a href="/forgot-password" className="forgot-password">パスワードをお忘れの方</a>
-            <button type="submit" className="login-btn">ログイン</button>
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? 'ログイン中...' : 'ログイン'}
+            </button>
           </form>
           <div className="social-login-prompt">
             <span></span>
