@@ -282,7 +282,7 @@
   
   .review-stars {
     display: flex;
-    margin: 10px 75px ;
+    
   }
   
   .star {
@@ -291,6 +291,37 @@
     margin-right: 5px;
     cursor: pointer;
   }
+
+  /* Nút Submit Review */
+.submit-review {
+  background-color: #28a745; /* Màu nền xanh lá cây */
+  color: white;
+  font-size: 18px;
+  padding: 12px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Hiệu ứng chuyển tiếp mượt mà */
+  margin-top: 20px; /* Khoảng cách với các phần tử trên */
+  width: 100%; /* Chiếm hết chiều rộng */
+  text-align: center;
+}
+
+.submit-review:hover {
+  background-color: #218838; /* Màu nền khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+.submit-review:active {
+  background-color: #1e7e34; /* Màu nền khi nhấn */
+  transform: scale(1); /* Khôi phục kích thước khi nhấn */
+}
+
+.submit-review:disabled {
+  background-color: #ccc; /* Màu nền khi nút bị vô hiệu hóa */
+  cursor: not-allowed; /* Đổi con trỏ thành không cho phép khi disabled */
+}
+
   
   /* Danh sách đánh giá */
   .review-list {
@@ -325,7 +356,7 @@
   }
   
   .review-name {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     color: #fff;
   }
@@ -337,7 +368,7 @@
   }
   
   .review-content {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.6;
     margin: 20px 20px 40px 20px;
     color: #fff;

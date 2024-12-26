@@ -1,143 +1,198 @@
-import React from 'react'
-import './DishDetail.css'
-import { assets,restaurants,reviews } from '../../assets/assets'
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import './DishDetail.css';
+import { assets, restaurants } from '../../assets/assets';
 
 const DishDetail = () => {
-    return (
-      <div className="dish-card">
-      {/* Header với nút Quay lại và nút Yêu thích */}
+  const [dish, setDish] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [reviewContent, setReviewContent] = useState('');
+  const [reviews, setReviews] = useState([]);
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const dishId = queryParams.get('id');
+  const user_id = localStorage.getItem('user_id');
+  const user_name = localStorage.getItem('user_name');  // Thêm user_name nếu có lưu trong localStorage
+
+  useEffect(() => {
+    const fetchDishDetail = async () => {
+      if (!dishId) return;
+
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:9002/posts/${dishId}`);
+        setDish(response.data);
+        setIsFavorite(response.data.isFavorite || false);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching dish details:', err);
+        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
+        setLoading(false);
+      }
+    };
+
+    const fetchReviews = async () => {
+      if (!dishId) return;
+
+      try {
+        const response = await axios.get(`http://localhost:9002/posts/comment/${dishId}`);
+        setReviews(response.data);
+      } catch (err) {
+        console.error('Error fetching reviews:', err);
+      }
+    };
+
+    fetchDishDetail();
+    fetchReviews();
+  }, [dishId]);
+
+  const handleFavoriteClick = async () => {
+    if (!user_id || isNaN(user_id)) {
+      alert('Bạn cần đăng nhập và userId phải là một số hợp lệ.');
+      return;
+    }
+  
+    if (!dishId || isNaN(dishId)) {
+      alert('Món ăn không hợp lệ.');
+      return;
+    }
+  
+    try {
+      const response = await axios.post(`http://localhost:9002/posts/like`, { 
+        userId: Number(user_id),
+        postId: Number(dishId)
+      });
+
+      if (response.status === 200) {
+        setIsFavorite(prevState => !prevState);
+      }
+    } catch (error) {
+      console.error('Error liking dish:', error);
+      alert('Không thể thêm vào danh sách yêu thích. Vui lòng thử lại.');
+    }
+  };
+
+  // Gửi review mới
+  const handleSubmitReview = async () => {
+    if (!reviewContent) {
+      alert('Vui lòng nhập nội dung review.');
+      return;
+    }
+
+    if (!user_id || !user_name) {
+      alert('Bạn cần đăng nhập để gửi review.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:9002/posts/comment', {
+        userId: Number(user_id),
+        userName: user_name,  // Sử dụng tên người dùng từ localStorage
+        description: reviewContent,  // Nội dung review
+        postId: Number(dishId)
+      });
+
+      if (response.status === 200) {
+        setReviews(prevReviews => [response.data, ...prevReviews]); // Thêm review mới vào đầu danh sách
+        setReviewContent(''); // Xóa nội dung review sau khi gửi
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('Không thể gửi review. Vui lòng thử lại.');
+    }
+  };
+
+  if (loading) {
+    return <p>データを読み込んでいます...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  if (!dish) {
+    return <p>商品が見つかりません。</p>;
+  }
+
+  return (
+    <div className="dish-card">
       <div className="dish-header">
-          <button className="back-button" onClick={() => window.history.back()}>
-          <img 
-                src={assets.arrow_back}
-                alt="Back" 
-              /> {/* Biểu tượng quay lại */}
-          </button>
-          <h2 className="dish-name">Bún Chả HaNoi</h2>
-          <button className="favorite-button">
-          <img 
-                src={assets.bookmark}
-                alt="favor" 
-              /> {/* Biểu tượng yêu thích */}
-          </button>
+        <button className="back-button" onClick={() => window.history.back()}>
+          <img src={assets.arrow_back} alt="Back" />
+        </button>
+        <h2 className="dish-name">{dish.name}</h2>
+        <button
+          className="favorite-button"
+          onClick={handleFavoriteClick}
+        >
+          <img src={isFavorite ? assets.bookmark_filled : assets.bookmark} alt="Favor" />
+        </button>
       </div>
-          <div className="dish-content">
-            <div className="dish-image">
-              <img 
-                src={assets.food5}
-                alt="Bún Chả" 
-              />
+
+      <div className="dish-content">
+        <div className="dish-image">
+          <img src={dish.image || assets.food5} alt={dish.name} />
+        </div>
+
+        <div className="dish-info">
+          <div className="dish-details">
+            <div className="detail-row">
+              <span className="detail-label">料理名</span>
+              <span className="detail-value">{dish.name}</span>
             </div>
-            
-            <div className="dish-info">
-              <div className="dish-details">
-                <div className="detail-row">
-                  <span className="detail-label">料理名</span>
-                  <span className="detail-value">ブンチャ (Bún Chả)</span>
-                </div>
-                <div className="detail-row">
-                  <span className="detail-label">説明</span>
-                  <span className="detail-value">
-                    バンチャーはハノイの伝統的な料理で、香ばしい焼き豚肉と新鮮なバン、濃厚なタレ、そして生野菜を含む料理です。
-                  </span>
-                </div>
-                <div className="detail-row">
-                  <span className="detail-label">カテゴリ</span>
-                  <span className="detail-value">ブランチ</span>
-                </div>
-                <div className="detail-row">
-                  <span className="detail-label">味</span>
-                  <span className="detail-value">塩辛い ・ 甘い</span>
-                </div>
-                <div className="detail-row">
-                  <span className="detail-label">価格</span>
-                  <span className="detail-value">50,000 VND (約250円)</span>
-                </div>
-                <div className="detail-row">
-                  <span className="detail-label">評価</span>
-                  <span className="detail-value">4.5/5</span>
-                </div>
+            <div className="detail-row">
+              <span className="detail-label">説明</span>
+              <span className="detail-value">{dish.making || 'Chưa có mô tả'}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">価格</span>
+              <span className="detail-value">{dish.price ? `${dish.price} VND` : 'Không có giá'}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Recipe */}
+      <div className="recipe">
+        <h2 className="recipe-name">{dish.making ? 'Công thức' : 'Chưa có công thức'}</h2>
+        <div className="ingredient">
+          <h3 className="title">材料:</h3>
+          <ul className="ingredient-list">
+            {dish.materials ? dish.materials.split(',').map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            )) : 'Chưa có nguyên liệu'}
+          </ul>
+        </div>
+      </div>
+
+      {/* Restaurants */}
+      <div className="restaurant">
+        <h2 className="res-title">この料理で知られている有名な店</h2>
+        <p className="res-description">
+          この料理に興味があるなら、以下のレストランで試してみることをためらわないでください。
+        </p>
+        <div className="res-suggest">
+          {restaurants.map((restaurant, index) => (
+            <div key={index} className="card">
+              <img src={restaurant.image} alt={restaurant.name} />
+              <div className="card-content">
+                <h3 className="card-title">{restaurant.name}</h3>
+                <p className="card-address">Địa chỉ: {restaurant.address}</p>
+                <p className="card-hotline">Hotline: {restaurant.hotline}</p>
               </div>
             </div>
-          </div>
-
-          <div className="recipe">
-            <h2 className="recipe-name">味噌汁の作り方</h2>
-            <div className="ingredient">
-                <h3 className="title">材料:</h3>
-                <ul className="ingredient-list">
-                    <li>水：500ml</li>
-                    <li>出汁：1袋</li>
-                    <li>味噌：大さじ2</li>
-                    <li>豆腐：1/2丁</li>
-                    <li>わかめ：少々</li>
-                    <li>ネギ：1本</li>
-                </ul>
-            </div>
-            <div className="HowToDo">
-                <h3 className="title">作り方:</h3>
-                <ol className="ToDo-list">
-                    <li >準備する:</li>
-                        <ul className="DotList">
-                            <li >豆腐を小さな四角に切ります。</li>
-                            <li >わかめをぬるま湯に5分ほど浸して、柔らかくなったら水気を切ります。</li>
-                            <li >ネギを小口切りにします。</li>
-                        </ul>
-                    <li >だしを作る:</li>
-                        <ul className="DotList">
-                            <li >鍋に500mlの水を入れて沸騰させます。沸騰したら出汁を1袋加えて、よく混ぜ、1〜2分煮ます。</li>
-                        </ul>
-                    <li >味噌を加える:</li>
-                        <ul className="DotList">
-                            <li >火を中火に弱め、味噌を大さじ2加えます。味噌が固まらないように、スプーンや味噌こしでしっかり溶かします。</li>
-                        </ul>
-                    <li >具材を加える:</li>
-                        <ul className="DotList">
-                            <li >豆腐とわかめを鍋に入れ、1〜2分温めます。豆腐が崩れないように優しく混ぜます。</li>
-                        </ul>
-                    <li >仕上げ:</li>
-                        <ul className="DotList">
-                            <li >味噌汁をお椀によそい、小口切りにしたネギを飾って完成です。</li>   
-                        </ul>
-                </ol>
-            </div>
-          </div>
-        <div>
-      
-      <div className="video">
-        <iframe 
-            width="560" // Đặt chiều rộng của video
-            height="315" // Đặt chiều cao của video
-            src="https://www.youtube.com/embed/SQ1j8WkOUZM?si=xGD7sh9pS2LyvlHd" // Thay bằng URL video YouTube bạn muốn nhúng
-            frameBorder="0" // Tùy chọn để không có viền
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" // Các quyền hạn sử dụng
-            allowFullScreen // Cho phép xem toàn màn hình
-        ></iframe>
-      </div>
-    </div>
-
-
-        <div className="restaurant">
-            <h2 className="res-title">この料理で知られている有名な店</h2>
-            <p className="res-description">この料理に興味があるなら、以下のレストランで試してみることをためらわないでください。</p>
-            <div className="res-suggest">
-                {restaurants.map((restaurant, index) => (
-                    <div key={index} className="card">
-                    <img src={restaurant.image} alt={restaurant.name} />
-                    <div className="card-content">
-                        <h3 className="card-title">{restaurant.name}</h3>
-                        <p className="card-address">Địa chỉ: {restaurant.address}</p>
-                        <p className="card-hotline">Hotline: {restaurant.hotline}</p>
-                    </div>
-                    </div>
-                ))}
-            </div>
+          ))}
         </div>
-   
-        <div className="review-container">
-            {/* Khu vực thêm đánh giá */}
-          <div className="add-review">
-            <div className="add-review-header">
+      </div>
+
+      {/* Reviews */}
+      <div className="review-container">
+        <div className="add-review">
+          <div className="add-review-header">
             <img
               src={assets.user1}
               alt="User Avatar"
@@ -146,53 +201,53 @@ const DishDetail = () => {
             <div className="review-input">
               <input
                 type="text"
+                value={reviewContent}
+                onChange={(e) => setReviewContent(e.target.value)}
                 placeholder="ここにレビューを追加してください"
+                
               />
-            </div>
-            </div>
-            <div className="review-stars">
-              {[...Array(5)].map((_, index) => (
-                <span key={index} className="star">
-                  ★
-                </span>
-              ))}
+              <div className="review-stars">
+                {[...Array(5)].map((_, index) => (
+                  <span key={index} className="star">★</span>
+                ))}
+              </div>
+
+
+              <button onClick={handleSubmitReview} className="submit-review">Submit</button>
             </div>
           </div>
+          
+          
+        </div>
 
-
-            {/* Danh sách đánh giá */}
-            <div className="review-list">
-                {reviews.map((review, index) => (
-                <div key={index} className="review-item">
-                    <div className="review-header">
-                      <div className="review-rating">
-                      {[...Array(review.rating)].map((_, index) => (
-                          <span key={index} className="star filled">
-                          ★
-                          </span>
-                      ))}
-                      </div>
-
-                    </div>
-
-                    <p className="review-content">{review.content}</p>
-
-                    <div className="review-footer">
-                    <img src={review.avatar} alt={review.name} className="review-avatar" />
-                    <p className="review-name">{review.name}</p>
-                    <p className="review-date">{review.date}</p>
-                          
-                      
+        <div className="review-list">
+            {/* Hiển thị chỉ 3 bình luận mới nhất */}
+            {reviews.slice(-3).map((review, index) => (
+              <div key={index} className="review-item">
+                <div className="review-header">
+                <img
+                    src={assets.user1}
+                    alt={review.userName}
+                    className="review-avatar"
+                  />
+                  <p className="review-name">{review.userName}</p>
+                  <p className="review-date">{review.date}</p>
+                  
+                </div>
+                <p className="review-content">{review.description}</p>
+                <div className="review-footer">
+                    <div className="review-rating">
+                        {[...Array(5)].map((_, index) => (
+                        <span key={index} className="star">★</span>
+                    ))}
                     </div>
                 </div>
-                ))}
-            </div>
+              </div>
+            ))}
+          </div>
         </div>
-    
     </div>
-    
-    
-    );
-}
+  );
+};
 
-export default DishDetail
+export default DishDetail;

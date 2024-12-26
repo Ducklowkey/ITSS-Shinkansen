@@ -5,9 +5,12 @@ import { assets } from '../../assets/assets';
 import './login.css'; // Nhúng file CSS
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL; // Sử dụng biến môi trường
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // Trạng thái đang xử lý
   const { setIsLoggedIn } = useAuth(); // Lấy hàm setIsLoggedIn từ context
   const navigate = useNavigate(); // Hook để điều hướng
 
@@ -16,30 +19,48 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    try {
-      // Gửi thông tin email và password đến API login
-      const response = await axios.post(`http://localhost:9002/auth/login`, {
-        email,
-        password,
-      });
-  
 
-      if (response.status === 200) {
-        const { token } = response.data; // Backend trả về token
-        localStorage.setItem('token', token); // Lưu token vào localStorage
-        setIsLoggedIn(true); // Cập nhật trạng thái đăng nhập
-        navigate('/home'); // Chuyển hướng đến trang home
+    setLoading(true); // Hiển thị trạng thái loading
+
+    try {
+      const response = await axios.post(`${API_URL}/auth/login`, {
+        email: email,
+        password: password,
+      });
+
+      console.log("Response từ API:", response);
+
+      if (response && response.data) {
+        const { token, id, name} = response.data; // Backend trả về token và id thay vì user_id
+
+        if (id && name) {
+          localStorage.setItem('token', token); // Lưu token vào localStorage
+          localStorage.setItem('user_id', id); // Lưu id (tương đương user_id) vào localStorage
+          localStorage.setItem('user_name', name); 
+          setIsLoggedIn(true); // Cập nhật trạng thái đăng nhập
+          navigate('/home'); // Chuyển hướng đến trang home
+        } else {
+          alert("Không có id trong phản hồi từ server.");
+        }
+      } else {
+        alert("Không nhận được dữ liệu từ server");
       }
     } catch (error) {
-      console.error('Login failed:', error.response?.data?.message || error.message);
-      alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin đăng nhập.');
+      console.error("Lỗi xảy ra:", error);
+
+      if (error.response) {
+        console.log("Chi tiết lỗi từ server:", error.response.data);
+        alert(`Lỗi: ${error.response.data.message || "Server không phản hồi đúng định dạng"}`);
+      } else {
+        alert("Lỗi: Không thể kết nối tới server");
+      }
+    } finally {
+      setLoading(false); // Tắt trạng thái loading
     }
   };
-  
 
   return (
-    <div className="login"> {/* Lớp cha là 'login' */}
+    <div className="login">
       <div className="login-container">
         <div className="login-form">
           <div className="logo">
@@ -67,7 +88,9 @@ const Login = () => {
               />
             </div>
             <a href="/forgot-password" className="forgot-password">パスワードをお忘れの方</a>
-            <button type="submit" className="login-btn">ログイン</button>
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? 'ログイン中...' : 'ログイン'}
+            </button>
           </form>
           <div className="social-login-prompt">
             <span></span>

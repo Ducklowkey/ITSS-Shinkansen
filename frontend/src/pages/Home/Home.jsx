@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import axios from 'axios'; // Import Axios
 import { assets } from '../../assets/assets';
 import './Home.css';
 
@@ -7,7 +8,29 @@ const Home = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedTaste, setSelectedTaste] = useState([]);
   const [selectedPrices, setSelectedPrices] = useState([]);
+  const [products, setProducts] = useState([]); // State cho danh sách món ăn
+  const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
+  const [error, setError] = useState(null); // Trạng thái lỗi
   const navigate = useNavigate(); // Khởi tạo useNavigate
+
+  // Gọi API để lấy danh sách món ăn
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('http://localhost:9002/posts/filter'); 
+        console.log('API Response:', response);
+        setProducts(response.data); // Cập nhật danh sách món ăn
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const toggleFilter = (selectedList, setFunction, value) => {
     setFunction((prev) =>
@@ -27,17 +50,15 @@ const Home = () => {
           <form action="" className="center">
             <input type="text" placeholder="キーワードを入力して" />
             <button>
-            <img src={assets.Search2} alt="Search Icon" className="search-full-icon" />
+              <img src={assets.Search2} alt="Search Icon" className="search-full-icon" />
             </button>
           </form>
         </div>
         <form id="filter">
-          <h3 className='filter-header'>
+          <h3 className="filter-header">
             フィルター <i className="fa-solid fa-magnifying-glass"></i>
             <img src={assets.Search1} alt="Search Icon" className="search-icon" />
           </h3>
-
-
 
           <div id="list-filter">
             {/* Category Filter */}
@@ -113,18 +134,27 @@ const Home = () => {
           </div>
         </form>
         <div id="list-products">
-          {[assets.food1, assets.food2, assets.food3, assets.food5, assets.food5, assets.food5, assets.food5, assets.food4].map((image, index) => (
-            <div className="product-item" key={index} onClick={() => handleItemClick(index)}>
-              <div className="product-img">
-                <img src={image} alt="" />
+          {loading && <p>データを読み込んでいます...</p>}
+          {error && <p>{error}</p>}
+          {!loading && !error && products.length === 0 && <p>商品が見つかりません。</p>}
+          {!loading &&
+            !error &&
+            products.map((product) => (
+              <div
+                className="product-item"
+                key={product.id}
+                onClick={() => handleItemClick(product.id)}
+              >
+                <div className="product-img">
+                  <img src={product.image} alt={product.name} />
+                </div>
+                <div className="product-content">
+                  <span className="price">${product.price}</span>
+                  <a href="#" className="product-name">{product.name}</a>
+                  <span className="product-description">{product.description}</span>
+                </div>
               </div>
-              <div className="product-content">
-                <span className="price">$ 9.99</span>
-                <a href="#" className="product-name">卵焼き</a>
-                <span className="product-description">卵、レタス、塩、油などで作られています。</span>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
