@@ -1,0 +1,71 @@
+.favorite-page {
+    padding: 20px;
+  }
+  
+  .favorite-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .favorite-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 thẻ trên một hàng */
+    gap: 20px; /* Khoảng cách giữa các thẻ */
+    padding: 10px;
+  }
+  
+  .favorite-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .favorite-item:hover {
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+  }
+  
+  .favorite-item-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .favorite-item-info {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .favorite-item-info h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .favorite-item-info p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .remove-favorite-btn {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #f44336; /* Màu đỏ */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-favorite-btn:hover {
+    background-color: #d32f2f; /* Màu đỏ đậm khi hover */
+  }
+  

@@ -212,15 +212,24 @@
 .review-container {
     background-color: #3c3c3c;
     color: #fff;
-    padding: 20px;
+    padding: 20px 20px 20px 30px;
     font-family: Arial, sans-serif;
+    display: flex;
   }
   
   /* Khu vực thêm đánh giá */
   .add-review {
     display: flex;
-    align-items: center;
+    justify-content: center;
     margin-bottom: 30px;
+    flex:1;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .add-review-header {
+    display: flex;
+    align-items: center;
   }
   
   .user-avatar {
@@ -233,15 +242,47 @@
   .review-input {
     background-color: #fff;
     color: #aaa;
-    padding: 15px;
+    padding: 30px;
     border-radius: 10px;
     flex: 1;
     margin-right: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .review-input input {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của phần tử cha */
+    height: 80px; /* Tăng chiều cao cho input */
+    padding: 10px 15px; /* Tăng khoảng cách bên trong để text dễ nhìn */
+    font-size: 18px; /* Tăng kích thước chữ */
+    border: 1px solid #ccc; /* Viền mỏng */
+    border-radius: 10px; /* Góc bo tròn */
+    background-color: #fff; /* Màu nền trắng */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    outline: none; /* Loại bỏ viền khi focus */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà khi tương tác */
+  }
+  
+  .review-input input:focus {
+    border-color: #007bff; /* Màu viền xanh khi input được focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Hiệu ứng ánh sáng khi focus */
+  }
+
+  .review-input::before {
+    content: ''; /* Bắt buộc phải có */
+    position: absolute;
+    top: 20px; /* Điều chỉnh vị trí theo chiều dọc */
+    left: -10px; /* Điều chỉnh vị trí ngang để tam giác ở ngoài box */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; /* Cạnh trên của tam giác */
+    border-bottom: 10px solid transparent; /* Cạnh dưới của tam giác */
+    border-right: 10px solid #fff; /* Màu tam giác khớp với màu nền của box */
   }
   
   .review-stars {
     display: flex;
+    
   }
   
   .star {
@@ -250,35 +291,72 @@
     margin-right: 5px;
     cursor: pointer;
   }
+
+  /* Nút Submit Review */
+.submit-review {
+  background-color: #28a745; /* Màu nền xanh lá cây */
+  color: white;
+  font-size: 18px;
+  padding: 12px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Hiệu ứng chuyển tiếp mượt mà */
+  margin-top: 20px; /* Khoảng cách với các phần tử trên */
+  width: 100%; /* Chiếm hết chiều rộng */
+  text-align: center;
+}
+
+.submit-review:hover {
+  background-color: #218838; /* Màu nền khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+.submit-review:active {
+  background-color: #1e7e34; /* Màu nền khi nhấn */
+  transform: scale(1); /* Khôi phục kích thước khi nhấn */
+}
+
+.submit-review:disabled {
+  background-color: #ccc; /* Màu nền khi nút bị vô hiệu hóa */
+  cursor: not-allowed; /* Đổi con trỏ thành không cho phép khi disabled */
+}
+
   
   /* Danh sách đánh giá */
   .review-list {
     margin-top: 20px;
+    flex:1;
   }
   
   .review-item {
     background-color: #2c2c2c;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 20px;
+    margin: 60px 60px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .review-header {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 10px 20px;
+  }
+
+  .review-footer {
+    display: flex;
+    margin: 0px 20px;
   }
   
   .review-avatar {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     margin-right: 15px;
   }
   
   .review-name {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     color: #fff;
   }
@@ -286,12 +364,13 @@
   .review-date {
     font-size: 12px;
     color: rgb(255, 255, 255);
+    margin-left: auto;
   }
   
   .review-content {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.6;
-    margin: 10px 0;
+    margin: 20px 20px 40px 20px;
     color: #fff;
   }
   
