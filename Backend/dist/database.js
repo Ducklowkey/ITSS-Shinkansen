@@ -8,7 +8,7 @@ const dialect = new kysely_1.MysqlDialect({
         database: 'itss',
         host: 'battle-ship-phuongxxx971022-4df8.c.aivencloud.com',
         user: 'avnadmin',
-        password: '',
+        password: 'AVNS_lECCc4owrRuPx3Zjr0e',
         port: 16578,
         connectionLimit: 10,
     }),

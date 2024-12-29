@@ -120,18 +120,26 @@ const DishDetail = () => {
 
   return (
     <div className="dish-card">
+      <div className="dish-container">
       <div className="dish-header">
         <button className="back-button" onClick={() => window.history.back()}>
           <img src={assets.arrow_back} alt="Back" />
         </button>
         <h2 className="dish-name">{dish.name}</h2>
-        <button
-          className="favorite-button"
-          onClick={handleFavoriteClick}
-        >
-          <img src={isFavorite ? assets.bookmark_filled : assets.bookmark} alt="Favor" />
-        </button>
+        <div className="action-buttons">
+          <button className="favorite-button" onClick={handleFavoriteClick}>
+            <img src={isFavorite ? assets.bookmark_filled : assets.bookmark} alt="Favorite" />
+          </button>
+          <button className="share-button" onClick={() => navigator.share({
+            title: dish.name,
+            text: 'Check out this dish!',
+            url: window.location.href
+          }).catch((err) => console.error('Error sharing:', err))}>
+            <img src={assets.share_button} alt="Share" />
+          </button>
+        </div>
       </div>
+
 
       <div className="dish-content">
         <div className="dish-image">
@@ -187,6 +195,7 @@ const DishDetail = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
 
       {/* Reviews */}

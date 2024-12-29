@@ -35,6 +35,7 @@ import Key from './Key_icon.png'
 import Mail from './Mail_icon.png'
 import Name from './Name_icon.png'
 import Phone from './Phone_icon.png'
+import share_button from './share_button.png'
 
 export const assets = {
     logo,
@@ -69,7 +70,8 @@ export const assets = {
     Key,
     Mail,
     Name,
-    Phone
+    Phone,
+    share_button
 }
 
 export const restaurants = [

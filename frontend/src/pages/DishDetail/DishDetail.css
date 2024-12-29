@@ -3,9 +3,20 @@
   display: flex;
   flex-direction: column;
   
+
   margin-top: 60px;
   overflow: hidden;
   font-family: Arial, sans-serif;
+}
+
+.dish-container {
+  display: flex;
+  flex-direction: column;
+  
+
+  margin: 60px 80px 0 80px;
+  overflow: hidden;
+
 }
 
 /* Header bao gồm tên món ăn và các nút */
@@ -49,6 +60,25 @@
   font-size: 1.8rem;
   margin-right: 20px;
 }
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust spacing between buttons */
+}
+
+.share-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+
+.share-button:hover {
+  transform: scale(1.2);
+}
+
 
 /* Các phần nội dung bên dưới */
 .dish-content {
