@@ -33,8 +33,7 @@ const Login = () => {
         const { token, id, name} = response.data; // Backend trả về token và id thay vì user_id
 
         if (id && name) {
-          localStorage.setItem('token', token); // Lưu token vào localStorage
-          localStorage.setItem('user_id', id); // Lưu id (tương đương user_id) vào localStorage
+          localStorage.setItem('user_id', JSON.stringify(id)); // Lưu id (tương đương user_id) vào localStorage
           localStorage.setItem('user_name', name); 
           setIsLoggedIn(true); // Cập nhật trạng thái đăng nhập
           navigate('/home'); // Chuyển hướng đến trang home

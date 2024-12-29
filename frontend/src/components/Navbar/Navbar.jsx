@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { isLoggedIn } = useAuth();
+  const {isLoggedIn}  = useAuth();
   const userName = localStorage.getItem('user_name')
 
 
