@@ -1,14 +1,30 @@
 .navbar {
-    padding: 20px 0px;
     display: flex;
-    justify-content: space-between; /* Căn logo bên trái và nút đăng ký bên phải */
     align-items: center;
- }
- 
- .navbar .logo {
-     width: 200px; /* Kích thước logo */
-     margin-left: 40px;
- }
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add space between username and avatar */
+  }
+  
+  .username {
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Adjust text color */
+    margin-right: 30px;
+  }
+  
+  .profile-pic {
+    width: 40px; /* Adjust avatar size */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
  
  .navbar button {
      background: transparent;
@@ -24,8 +40,4 @@
  
  .navbar button:hover {
      background-color: #b2bde2;
- }
- .navbar .profile-pic {
-    margin-right: 30px;
-    width: 80px;
  }

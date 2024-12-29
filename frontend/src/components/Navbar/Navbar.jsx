@@ -6,6 +6,8 @@ import './Navbar.css';
 
 const Navbar = () => {
   const { isLoggedIn } = useAuth();
+  const userName = localStorage.getItem('user_name')
+
 
   return (
     <div className='navbar'>
@@ -13,9 +15,13 @@ const Navbar = () => {
         <img src={assets.Logofull} alt="Logo" className="logo" />
       </Link>
       {isLoggedIn ? (
-        <Link to="/User"> 
-          <img src={assets.user1} alt="User Profile" className="profile-pic" />
-        </Link>
+
+      <div className="user-info">
+      <span className="username">Xin chào, {userName}</span> {/* Display username */}
+      <Link to="/User"> 
+        <img src={assets.user1} alt="User Profile" className="profile-pic" />
+      </Link>
+    </div>
       ) : (
         <Link to="/login">
           <button>サインアップ</button>

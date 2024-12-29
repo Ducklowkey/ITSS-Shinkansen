@@ -13,7 +13,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false); // Trạng thái đang xử lý
   const { setIsLoggedIn } = useAuth(); // Lấy hàm setIsLoggedIn từ context
   const navigate = useNavigate(); // Hook để điều hướng
-
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 

@@ -11,6 +11,7 @@ const DishDetail = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [reviewContent, setReviewContent] = useState('');
   const [reviews, setReviews] = useState([]);
+  const [selectedStars, setSelectedStars] = useState(0);
   const location = useLocation();
 
   const queryParams = new URLSearchParams(location.search);
@@ -216,15 +217,21 @@ const DishDetail = () => {
                 
               />
               <div className="review-stars">
-                {[...Array(5)].map((_, index) => (
-                  <span key={index} className="star">★</span>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span
+                    key={star}
+                    className={`star ${selectedStars >= star ? 'selected' : ''}`}
+                    onClick={() => setSelectedStars(star)}
+                  >
+                    ★
+                  </span>
                 ))}
               </div>
 
 
-              <button onClick={handleSubmitReview} className="submit-review">Submit</button>
             </div>
           </div>
+          <button onClick={handleSubmitReview} className="submit-review">Submit</button>
           
           
         </div>
