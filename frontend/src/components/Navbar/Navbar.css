@@ -15,7 +15,7 @@
   .username {
     font-size: 20px; /* Adjust font size */
     color: #333; /* Adjust text color */
-    margin-right: 30px;
+    margin-right: 20px;
   }
   
   .profile-pic {
@@ -40,4 +40,8 @@
  
  .navbar button:hover {
      background-color: #b2bde2;
+ }
+  
+ .logo {
+      width: 200px;
  }

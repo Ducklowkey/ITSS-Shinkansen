@@ -19,6 +19,18 @@ const DishDetail = () => {
   const user_id = localStorage.getItem('user_id');
   const user_name = localStorage.getItem('user_name');  // Thêm user_name nếu có lưu trong localStorage
 
+
+  const fetchReviews = async () => {
+    if (!dishId) return;
+
+    try {
+      const response = await axios.get(`http://localhost:9002/posts/comment/${dishId}`);
+      setReviews(response.data);
+    } catch (err) {
+      console.error('Error fetching reviews:', err);
+    }
+  };
+
   useEffect(() => {
     const fetchDishDetail = async () => {
       if (!dishId) return;
@@ -33,17 +45,6 @@ const DishDetail = () => {
         console.error('Error fetching dish details:', err);
         setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
         setLoading(false);
-      }
-    };
-
-    const fetchReviews = async () => {
-      if (!dishId) return;
-
-      try {
-        const response = await axios.get(`http://localhost:9002/posts/comment/${dishId}`);
-        setReviews(response.data);
-      } catch (err) {
-        console.error('Error fetching reviews:', err);
       }
     };
 
@@ -96,11 +97,8 @@ const DishDetail = () => {
         description: reviewContent,  // Nội dung review
         postId: Number(dishId)
       });
-
-      if (response.status === 200) {
-        setReviews(prevReviews => [response.data, ...prevReviews]); // Thêm review mới vào đầu danh sách
-        setReviewContent(''); // Xóa nội dung review sau khi gửi
-      }
+      fetchReviews();
+      setReviewContent('');
     } catch (error) {
       console.error('Error submitting review:', error);
       alert('Không thể gửi review. Vui lòng thử lại.');
@@ -167,7 +165,7 @@ const DishDetail = () => {
 
       {/* Recipe */}
       <div className="recipe">
-        <h2 className="recipe-name">{dish.making ? 'Công thức' : 'Chưa có công thức'}</h2>
+        <h2 className="recipe-name">{dish.making ? 'やり方' : 'Chưa có công thức'}</h2>
         <div className="ingredient">
           <h3 className="title">材料:</h3>
           <ul className="ingredient-list">

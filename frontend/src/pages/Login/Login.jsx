@@ -30,11 +30,13 @@ const Login = () => {
       console.log("Response từ API:", response);
 
       if (response && response.data) {
-        const { token, id, name} = response.data; // Backend trả về token và id thay vì user_id
+        const { token, id, name, email} = response.data; // Backend trả về token và id thay vì user_id
+        console.log(response.data);
 
-        if (id && name) {
+        if (id && name && email) {
           localStorage.setItem('user_id', JSON.stringify(id)); // Lưu id (tương đương user_id) vào localStorage
-          localStorage.setItem('user_name', name); 
+          localStorage.setItem('user_name', name);
+          localStorage.setItem('user_email', email);  
           setIsLoggedIn(true); // Cập nhật trạng thái đăng nhập
           navigate('/home'); // Chuyển hướng đến trang home
         } else {

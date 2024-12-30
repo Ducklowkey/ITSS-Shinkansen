@@ -17,11 +17,11 @@ const Navbar = () => {
       {isLoggedIn ? (
 
       <div className="user-info">
-      <span className="username">Xin chào, {userName}</span> {/* Display username */}
-      <Link to="/User"> 
-        <img src={assets.user1} alt="User Profile" className="profile-pic" />
-      </Link>
-    </div>
+        <span className="username">{userName}</span> {/* Display username */}
+        <Link to="/User"> 
+          <img src={assets.user1} alt="User Profile" className="profile-pic" />
+        </Link>
+      </div>
       ) : (
         <Link to="/login">
           <button>サインアップ</button>

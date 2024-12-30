@@ -51,13 +51,18 @@
   
   .favorite-item-info p {
     font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
     color: #555;
   }
   
   .remove-favorite-btn {
     margin-top: 15px;
-    padding: 8px 16px;
-    background-color: #f44336; /* Màu đỏ */
+    padding: 8px 25px;
+    background-color: #AD343E; /* Màu đỏ */
     color: white;
     border: none;
     border-radius: 5px;

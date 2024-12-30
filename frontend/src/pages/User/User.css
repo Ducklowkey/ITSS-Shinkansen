@@ -3,9 +3,10 @@
     max-width: 1280px;
     margin: 0 auto;
     background: #fff;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
   }
   
   .header-image {
@@ -30,6 +31,10 @@
     outline: none;
     cursor: pointer;
     position: relative;
+  }
+
+  .active-header {
+    color: #ff0000; /* Màu chữ khi được chọn */
   }
   
   .header-btn:hover {
@@ -123,7 +128,7 @@
   
   input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
   }
@@ -153,8 +158,8 @@
   }
   
   .add-email {
-    background-color: #f06292;
-    color: #fff;
+    background-color: #fdeee6;
+    color: #AD343E;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
@@ -162,6 +167,7 @@
   }
   
   .add-email:hover {
-    background-color: #ec407a;
+    background-color: #AD343E;
+    color: #fff;
   }
   

@@ -21,6 +21,7 @@ const Home = () => {
         const response = await axios.get('http://localhost:9002/posts/filter'); 
         console.log('API Response:', response);
         setProducts(response.data); // Cập nhật danh sách món ăn
+        console.log(response.data);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching products:', err);
@@ -43,44 +44,88 @@ const Home = () => {
     navigate(`/dish?id=${id}`); // Chuyển hướng đến /dish với query string
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('Search keyword:', e.target.keyword.value);
+    const searchParams = new URLSearchParams();
+    searchParams.append('search', e.target.keyword.value);
+    const searchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:9002/posts/filter?${searchParams.toString()}`);
+        console.log('API Response:', response);
+        setProducts(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
+        setLoading(false);
+      }
+    };
+    searchProducts();
+  }
+
+  const handleSubmitFilter = () => {
+    console.log('Selected Categories:', selectedCategories);
+    console.log('Selected Taste:', selectedTaste);
+    console.log('Selected Prices:', selectedPrices);
+    const filterParams = new URLSearchParams();
+    selectedCategories.forEach((category) => filterParams.append('category', category));
+    selectedTaste.forEach((taste) => filterParams.append('taste', taste));
+    selectedPrices.forEach((price) => filterParams.append('price', price));
+    const filterProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:9002/posts/filter?${filterParams.toString()}`);
+        console.log('API Response:', response);
+        setProducts(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
+        setLoading(false);
+      }
+    };
+    filterProducts();
+  }
+
   return (
     <div id="wrapper">
       <div id="content">
         <div id="search-keyword">
-          <form action="" className="center">
-            <input type="text" placeholder="キーワードを入力して" />
+          <form action="" className="center" onSubmit={handleSearch}>
+            <input type="text" placeholder="キーワードを入力して" name='keyword'/>
             <button>
               <img src={assets.Search2} alt="Search Icon" className="search-full-icon" />
             </button>
           </form>
         </div>
-        <form id="filter">
+        <div id="filter">
           <h3 className="filter-header">
             フィルター <i className="fa-solid fa-magnifying-glass"></i>
             <img src={assets.Search1} alt="Search Icon" className="search-icon" />
           </h3>
 
           <div id="list-filter">
-            {/* Category Filter */}
-            <div className="filter-items">
-              <div className="filter-title">
-                <span className="filter-type">カテゴリー</span>
-                <span className="filter-clear" onClick={() => setSelectedCategories([])}>すべてクリア</span>
-              </div>
-              <div className="filter-options">
-                {['軽食', '朝食', '昼食', '夕食', 'デザート'].map((category) => (
-                  <div
-                    className={`filter-option ${selectedCategories.includes(category) ? 'filter-active' : ''}`}
-                    key={category}
-                    onClick={() => toggleFilter(selectedCategories, setSelectedCategories, category)}
-                  >
-                    <span>{category}</span>
+                  <div className="filter-items">
+                    <div className="filter-title">
+                    <span className="filter-type">カテゴリー</span>
+                    <span className="filter-clear" onClick={() => setSelectedCategories([])}>すべてクリア</span>
+                    </div>
+                    <div className="filter-options">
+                    {['軽食', '朝食', '昼食', '夕食', 'デザート'].map((category, index) => (
+                      <div
+                      className={`filter-option ${selectedCategories.includes(index) ? 'filter-active' : ''}`}
+                      key={index}
+                      onClick={() => toggleFilter(selectedCategories, setSelectedCategories, index)}
+                      >
+                      <span>{category}</span>
+                      </div>
+                    ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Taste Filter */}
+                  {/* Taste Filter */}
             <div className="filter-items">
               <div className="filter-title">
                 <span className="filter-type">味フィルター</span>
@@ -121,18 +166,12 @@ const Home = () => {
           <div id="btn-filter" className="center">
             <button
               type="button"
-              onClick={() =>
-                console.log({
-                  selectedCategories,
-                  selectedTaste,
-                  selectedPrices,
-                })
-              }
+              onClick={handleSubmitFilter}
             >
               提出する
             </button>
           </div>
-        </form>
+        </div>
         <div id="list-products">
           {loading && <p>データを読み込んでいます...</p>}
           {error && <p>{error}</p>}
