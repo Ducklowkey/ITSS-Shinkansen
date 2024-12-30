@@ -14,7 +14,7 @@
   flex-direction: column;
   
 
-  margin: 60px 80px 0 80px;
+  margin: 60px 100px 0 100px;
   overflow: hidden;
 
 }
@@ -26,6 +26,13 @@
   align-items: center;
   padding: 16px;
   
+}
+
+.dish-header h2 {
+  position: absolute;
+  left: 50%;
+  font-size: 50px;
+  transform: translateX(-50%);
 }
 
 .back-button, .favorite-button {
@@ -83,14 +90,16 @@
 /* Các phần nội dung bên dưới */
 .dish-content {
   display: flex;
+  justify-content: center;
   gap: 16px;
   padding: 16px;
 }
 
 /* Hình ảnh món ăn */
 .dish-image img {
-  width: 500px;
+  width: 550px;
   height: auto;
+  border-radius: 20px;
   object-fit: cover;
 }
 
@@ -136,8 +145,9 @@
     font-size: 2rem;
 }
 
-.ingredient{
-    padding-left: 40px;
+.recipe-content {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .ingredient-list {
@@ -413,3 +423,22 @@
     margin-right: 5px;
   }
   
+  .similar-dish {
+    text-align: center;
+    padding: 10px 70px;
+  }
+
+  .similar-dish img {
+    border-radius: 20px;
+    width: 500px;
+  }
+
+  .similar-dish h2 {
+    margin-bottom: 30px;
+  }
+
+  .similar-dish div {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }

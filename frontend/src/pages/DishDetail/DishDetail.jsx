@@ -12,6 +12,7 @@ const DishDetail = () => {
   const [reviewContent, setReviewContent] = useState('');
   const [reviews, setReviews] = useState([]);
   const [selectedStars, setSelectedStars] = useState(0);
+  const [similarDish, setSimilarDish] = useState();
   const location = useLocation();
 
   const queryParams = new URLSearchParams(location.search);
@@ -39,6 +40,7 @@ const DishDetail = () => {
         setLoading(true);
         const response = await axios.get(`http://localhost:9002/posts/${dishId}`);
         setDish(response.data);
+        console.log(response.data);
         setIsFavorite(response.data.isFavorite || false);
         setLoading(false);
       } catch (err) {
@@ -48,8 +50,20 @@ const DishDetail = () => {
       }
     };
 
+    const japaneseDish = async () => {
+      try {
+        const response = await axios.get(`http://localhost:9002/posts/sameCourse/${dishId}`);
+        console.log(response.data);
+        setSimilarDish(response.data);
+      } catch (err) {
+        console.error('Error fetching dish details:', err);
+        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
+      }
+    };
+
     fetchDishDetail();
     fetchReviews();
+    japaneseDish();
   }, [dishId]);
 
   const handleFavoriteClick = async () => {
@@ -153,7 +167,7 @@ const DishDetail = () => {
             </div>
             <div className="detail-row">
               <span className="detail-label">説明</span>
-              <span className="detail-value">{dish.making || 'Chưa có mô tả'}</span>
+              <span className="detail-value">{dish.flavor || 'Chưa có mô tả'}</span>
             </div>
             <div className="detail-row">
               <span className="detail-label">価格</span>
@@ -163,20 +177,40 @@ const DishDetail = () => {
         </div>
       </div>
 
-      {/* Recipe */}
-      <div className="recipe">
-        <h2 className="recipe-name">{dish.making ? 'やり方' : 'Chưa có công thức'}</h2>
-        <div className="ingredient">
-          <h3 className="title">材料:</h3>
-          <ul className="ingredient-list">
-            {dish.materials ? dish.materials.split(',').map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            )) : 'Chưa có nguyên liệu'}
-          </ul>
+        <div className="recipe">
+          <h2 className="recipe-name">{dish.making ? 'やり方' : 'Chưa có công thức'}</h2>
+          <div>
+            <p className="recipe-content">{dish.making ? dish.making.split('\n').map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+            )) : 'Chưa có công thức'}</p>
+          </div>
+          <div className="ingredient">
+            <h3 className="title">材料:</h3>
+            <ul className="ingredient-list">
+          {dish.materials ? dish.materials.split('\n').map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          )) : 'Chưa có nguyên liệu'}
+            </ul>
+          </div>
         </div>
-      </div>
+        
+        {similarDish != null &&
+        <div className='similar-dish'>
+            <h2>該当日本料理</h2>
+            <div>
+               <img src={similarDish?.image || assets.food5} alt={similarDish?.name} />
+               <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left', width: "500px"}}>
+                  <h3 style={{fontSize: '35px'}}>{similarDish.name?similarDish.name:"情報がない"}</h3>
+                  <p style={{fontSize: '20px'}}>{similarDish.description?similarDish.description:"情報がない"}</p>
+               </div>
+            </div>
+        </div>
+        }
 
-      {/* Restaurants */}
+        {/* Restaurants */}
       <div className="restaurant">
         <h2 className="res-title">この料理で知られている有名な店</h2>
         <p className="res-description">
