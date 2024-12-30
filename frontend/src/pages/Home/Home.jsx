@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios'; // Import Axios
 import { assets } from '../../assets/assets';
@@ -12,7 +12,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
   const [error, setError] = useState(null); // Trạng thái lỗi
   const navigate = useNavigate(); // Khởi tạo useNavigate
-
+  const searchTimeoutRef = useRef(null); 
   // Gọi API để lấy danh sách món ăn
   useEffect(() => {
     const fetchProducts = async () => {
@@ -65,6 +65,26 @@ const Home = () => {
     searchProducts();
   }
 
+  const handleOnChangeSearch = (e) => {
+    const searchTerm = e.target.value;
+     if (searchTimeoutRef.current) {
+          clearTimeout(searchTimeoutRef.current);
+     }
+      searchTimeoutRef.current = setTimeout(async () => {
+            try {
+              if(searchTerm === '') {
+                  const response = await axios.get('http://localhost:9002/posts/filter');
+                  setProducts(response.data);
+              } else {
+                  const response = await axios.get(`http://localhost:9002/posts/filter?search=${searchTerm}`);
+                  setProducts(response.data);
+              }
+            } catch (error) {
+              console.error('Error fetching products:', error);
+            }
+          }, 500); // 500ms delay
+  }
+
   const handleSubmitFilter = () => {
     console.log('Selected Categories:', selectedCategories);
     console.log('Selected Taste:', selectedTaste);
@@ -94,7 +114,7 @@ const Home = () => {
       <div id="content">
         <div id="search-keyword">
           <form action="" className="center" onSubmit={handleSearch}>
-            <input type="text" placeholder="キーワードを入力して" name='keyword'/>
+            <input type="text" placeholder="キーワードを入力して" name='keyword' onChange={handleOnChangeSearch}/>
             <button>
               <img src={assets.Search2} alt="Search Icon" className="search-full-icon" />
             </button>

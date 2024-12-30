@@ -73,21 +73,21 @@ const User = () => {
           <div className="form-row">
             <div className="form-group">
               <label>名</label>
-              <input type="text" placeholder="あなたの名前" />
+              <input type="text" placeholder="あなたの名前" value={username}/>
             </div>
             <div className="form-group">
               <label>姓</label>
-              <input type="text" placeholder="あなたの苗字" />
+              <input type="text" placeholder="あなたの苗字" value={"Nguyen"}/>
             </div>
           </div>
           <div className="form-row">
             <div className="form-group">
               <label>性別</label>
-              <input type="text" placeholder="性別を入力" />
+              <input type="text" placeholder="性別を入力" value={"男"}/>
             </div>
             <div className="form-group">
               <label>国</label>
-              <input type="text" placeholder="国を入力" />
+              <input type="text" placeholder="国を入力" value={"ベトナム"}/>
             </div>
           </div>
           <div className="form-row">
@@ -125,8 +125,8 @@ const User = () => {
                   </div>
                   <div className="favorite-item-info">
                     <h3>{dish.name}</h3>
+                    <h4>{dish.price ? `${dish.price} VND` : 'Không có giá'}</h4>
                     <p>{dish.making || 'Chưa có mô tả'}</p>
-                    <p>{dish.price ? `${dish.price} VND` : 'Không có giá'}</p>
                   </div>
                   <button
                     className="remove-favorite-btn"

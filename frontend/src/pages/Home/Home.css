@@ -325,12 +325,9 @@ div#content {
 }
 
 div#list-products {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    /* gap: 20px; /* Khoảng cách giữa các sản phẩm */
-    /* margin-top: 30px;
-    justify-content: center; Căn giữa hàng cuối cùng nếu thiếu sản phẩm */ 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .product-item {
@@ -358,7 +355,8 @@ div#list-products {
     height: 150%;
     overflow: hidden;
     /* Ẩn phần ảnh vượt ra ngoài container */
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .product-img img {
@@ -368,7 +366,8 @@ div#list-products {
     /* Chiều cao 100% container */
     object-fit: cover;
     /* Cắt gọn ảnh nếu không khớp */
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     /* Làm tròn các góc */
 }
 
@@ -378,7 +377,7 @@ div#list-products {
     align-items: center; /* Căn giữa nội dung */
 }
 /* Tên món ăn */
-.productName {
+.product-name {
     font-size: 18px;
     font-weight: bold;
     margin: 5px 0;
@@ -387,7 +386,7 @@ div#list-products {
 /* Giá món ăn */
 .price {
     font-size: 16px;
-    color: #17a2b8;
+    color: #AD343E;
     font-weight: bold;
     margin: 10px 0; /* Thêm khoảng cách trên/dưới giá */
     text-align: center;
@@ -401,6 +400,7 @@ div#list-products {
     margin-top: 5px;
     text-align: center; /* Căn giữa mô tả */
     margin-bottom: 10px;
+    
 }
 
 /* Responsive - Đảm bảo hiển thị đẹp trên màn hình nhỏ */
