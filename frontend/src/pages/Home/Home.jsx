@@ -260,6 +260,7 @@ const Home = () => {
                 <div className="product-content">
                   <span className="price">{product.price} VND</span>
                   <a href="#" className="product-name">{product.name}</a>
+                  <span style={{marginTop: '3px'}}>({product.name_jp})</span>
                   <span className="product-description">{product.description}</span>
                 </div>
               </div>

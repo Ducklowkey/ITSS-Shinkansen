@@ -85,24 +85,28 @@ export const restaurants = [
         address: "102 Thái Thịnh, Láng Hạ, Đống Đa, Hà Nội",
         hotline: "19006 36882",
         image: res1,
+        link: "https://www.google.com/maps/dir/21.004288,105.8177024/B%C3%B2+T%C6%A1+Qu%C3%A1n+M%E1%BB%99c+Th%C3%A1i+Th%E1%BB%8Bnh,+102+P.+Th%C3%A1i+Th%E1%BB%8Bnh,+Ng%C3%A3+T%C6%B0+S%E1%BB%9F,+%C4%90%E1%BB%91ng+%C4%90a,+H%C3%A0+N%E1%BB%99i+100000/@21.0062873,105.8164959,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3135ac8259c7ca39:0x8b4ea241ecda20e6!2m2!1d105.8204392!2d21.0082996?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoJLDEwMjExMjMzSAFQAw%3D%3D"
     },
     {
         name: "Lẩu Phan",
         address: "Số 7 Đào Duy Anh, Đống Đa, Hà Nội",
         hotline: "1900 2808",
         image: res2,
+        link: "https://www.google.com/maps/dir//L%E1%BA%A9u+Phan+Th%C6%B0%E1%BB%A3ng+%C4%90%C3%ACnh,+278+P.+Th%C6%B0%E1%BB%A3ng+%C4%90%C3%ACnh,+Th%C6%B0%E1%BB%A3ng+%C4%90%C3%ACnh,+Thanh+Xu%C3%A2n,+H%C3%A0+N%E1%BB%99i/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3135adcf59c6faf5:0xcdae52f08629a140?sa=X&ved=1t:57443&ictx=111"
     },
     {
         name: "Hầm rượu IL Vino",
         address: "My Way Hotel & Residence, số 2 ngõ 86 Duy Tân, Cầu Giấy, Hà Nội",
         hotline: "093 657 1080",
-        image: res3
+        image: res3,
+        link: "https://www.google.com/maps/place/Nh%C3%A0+h%C3%A0ng+h%E1%BA%A7m+r%C6%B0%E1%BB%A3u+IL+VINO+Ginza/data=!4m2!3m1!1s0x0:0x33b5f1061be06ac5?sa=X&ved=1t:2428&ictx=111"
     },
     {
         name: "Nhà hàng Phụng Thành",
         address: "Số 3 Nguyễn Bỉnh Khiêm, Hai Bà Trưng, Hà Nội",
         hotline: "0911 293 386",
         image: res4,
+        link: "https://www.google.com/maps/place/Nh%C3%A0+h%C3%A0ng+C%C6%A1m+Vi%E1%BB%87t+Ph%E1%BB%A5ng+Th%C3%A0nh/data=!4m2!3m1!1s0x0:0x1d6c46e90768ee4a?sa=X&ved=1t:2428&ictx=111"
     }]
 
     export const reviews = [

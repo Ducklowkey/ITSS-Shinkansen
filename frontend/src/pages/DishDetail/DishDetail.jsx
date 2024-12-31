@@ -56,7 +56,6 @@ const DishDetail = () => {
         setSimilarDish(response.data);
       } catch (err) {
         console.error('Error fetching dish details:', err);
-        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
       }
     };
 
@@ -143,8 +142,6 @@ const DishDetail = () => {
         postId: Number(dishId),
         rate: selectedStars // Gửi số sao đã chọn
       });
-  
-      if (response.status === 200) {
         // Tạo đối tượng review mới để thêm ngay lập tức
         const newReview = {
           userName: user_name,
@@ -162,7 +159,6 @@ const DishDetail = () => {
   
         // Cuộn tới vị trí comment
         document.querySelector('.review-list').scrollIntoView({ behavior: 'smooth' });
-      }
     } catch (error) {
       console.error('Error submitting review:', error);
       alert('Không thể gửi review. Vui lòng thử lại.');
@@ -215,7 +211,7 @@ const DishDetail = () => {
           <div className="dish-details">
             <div className="detail-row">
               <span className="detail-label">料理名</span>
-              <span className="detail-value">{dish.name}</span>
+              <span className="detail-value" style={{fontWeight: 600}}>{dish.name_jp}</span>
             </div>
             <div className="detail-row">
               <span className="detail-label">説明</span>
@@ -251,7 +247,7 @@ const DishDetail = () => {
         
         {similarDish != null &&
         <div className='similar-dish'>
-            <h2>該当日本料理</h2>
+            <h2 style={{fontSize: '30px'}}>日本料理の類似</h2>
             <div>
                <img src={similarDish?.image || assets.food5} alt={similarDish?.name} />
                <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left', width: "500px"}}>
@@ -270,12 +266,12 @@ const DishDetail = () => {
         </p>
         <div className="res-suggest">
           {restaurants.map((restaurant, index) => (
-            <div key={index} className="card">
+            <div key={index} className="card" style={{cursor: "pointer"}} onClick={() => window.open(restaurant.link, '_blank')}>
               <img src={restaurant.image} alt={restaurant.name} />
               <div className="card-content">
                 <h3 className="card-title">{restaurant.name}</h3>
-                <p className="card-address">Địa chỉ: {restaurant.address}</p>
-                <p className="card-hotline">Hotline: {restaurant.hotline}</p>
+                <p className="card-address">住所: {restaurant.address}</p>
+                <p className="card-hotline">電話番号: {restaurant.hotline}</p>
               </div>
             </div>
           ))}
@@ -323,7 +319,7 @@ const DishDetail = () => {
 
         <div className="review-list">
             {/* Hiển thị chỉ 3 bình luận mới nhất */}
-            {reviews.slice(-3).map((review, index) => (
+            {reviews.slice(-5).map((review, index) => (
               <div key={index} className="review-item">
                 <div className="review-header">
                 <img
