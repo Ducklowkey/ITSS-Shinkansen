@@ -127,7 +127,7 @@ const Home = () => {
     console.log('Selected Taste:', selectedTaste);
     const filterParams = new URLSearchParams();
     selectedCategories.forEach((category) => filterParams.append('categoryId', category));
-    selectedTaste.forEach((taste) => filterParams.append('flavor', taste));
+    selectedTaste.forEach((flavor) => filterParams.append('flavorId', flavor));
     filterParams.append('beginPrice', beginPrice);
     filterParams.append('endPrice', endPrice);
     // selectedPrices.forEach((price) => filterParams.append('price', price));
@@ -190,13 +190,13 @@ const Home = () => {
                 <span className="filter-clear" onClick={() => setSelectedTaste([])}>すべてクリア</span>
               </div>
               <div className="filter-options">
-                {['酸味', '甘味', '苦味', '辛味'].map((taste) => (
+                {['甘味', '辛い ', '酸味', '苦い','塩辛い'].map((flavor, index) => (
                   <div
-                    className={`filter-option ${selectedTaste.includes(taste) ? 'filter-active' : ''}`}
-                    key={taste}
-                    onClick={() => toggleFilter(selectedTaste, setSelectedTaste, taste)}
+                    className={`filter-option ${selectedTaste.includes(index +1) ? 'filter-active' : ''}`}
+                    key={index} 
+                    onClick={() => toggleFilter(selectedTaste, setSelectedTaste, index+1)}
                   >
-                    <span>{taste}</span>
+                    <span>{flavor}</span>
                   </div>
                 ))}
               </div>
