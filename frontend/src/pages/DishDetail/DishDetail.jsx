@@ -124,21 +124,45 @@ const DishDetail = () => {
       alert('Vui lòng nhập nội dung review.');
       return;
     }
-
+  
     if (!user_id || !user_name) {
       alert('Bạn cần đăng nhập để gửi review.');
       return;
     }
-
+  
+    if (selectedStars === 0) {
+      alert('Vui lòng chọn số sao.');
+      return;
+    }
+  
     try {
       const response = await axios.post('http://localhost:9002/posts/comment', {
         userId: Number(user_id),
-        userName: user_name,  // Sử dụng tên người dùng từ localStorage
-        description: reviewContent,  // Nội dung review
-        postId: Number(dishId)
+        userName: user_name, // Sử dụng tên người dùng từ localStorage
+        description: reviewContent, // Nội dung review
+        postId: Number(dishId),
+        rate: selectedStars // Gửi số sao đã chọn
       });
-      fetchReviews();
-      setReviewContent('');
+  
+      if (response.status === 200) {
+        // Tạo đối tượng review mới để thêm ngay lập tức
+        const newReview = {
+          userName: user_name,
+          description: reviewContent,
+          rate: selectedStars,
+          date: new Date().toLocaleString() // Lấy ngày giờ hiện tại
+        };
+  
+        // Cập nhật danh sách review ngay lập tức
+        setReviews(prevReviews => [newReview, ...prevReviews]);
+  
+        // Reset input và sao sau khi gửi
+        setReviewContent('');
+        setSelectedStars(0);
+  
+        // Cuộn tới vị trí comment
+        document.querySelector('.review-list').scrollIntoView({ behavior: 'smooth' });
+      }
     } catch (error) {
       console.error('Error submitting review:', error);
       alert('Không thể gửi review. Vui lòng thử lại.');
@@ -277,16 +301,17 @@ const DishDetail = () => {
                 
               />
               <div className="review-stars">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`star ${selectedStars >= star ? 'selected' : ''}`}
-                    onClick={() => setSelectedStars(star)}
-                  >
-                    ★
-                  </span>
-                ))}
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      className={`star ${selectedStars >= star ? 'selected' : ''}`}
+                      onClick={() => setSelectedStars(star)}
+                    >
+                      ★
+                    </span>
+                  ))}
               </div>
+
 
 
             </div>
@@ -302,7 +327,7 @@ const DishDetail = () => {
               <div key={index} className="review-item">
                 <div className="review-header">
                 <img
-                    src={assets.user1}
+                    src={assets.user_icon}
                     alt={review.userName}
                     className="review-avatar"
                   />
@@ -312,11 +337,16 @@ const DishDetail = () => {
                 </div>
                 <p className="review-content">{review.description}</p>
                 <div className="review-footer">
-                    <div className="review-rating">
-                        {[...Array(5)].map((_, index) => (
-                        <span key={index} className="star">★</span>
-                    ))}
-                    </div>
+                <div className="review-rating">
+                  {[...Array(5)].map((_, index) => (
+                    <span
+                      key={index}  className={`star ${index < review.rate ? 'filled' : 'empty'}`}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+
                 </div>
               </div>
             ))}

@@ -340,15 +340,21 @@
   
   .review-stars {
     display: flex;
-    
+    margin-top: 10px;
   }
   
   .star {
     font-size: 24px;
-    color: #f3c623;
+    color: #ccc; /* Màu xám nhạt ban đầu */
     margin-right: 5px;
     cursor: pointer;
+    transition: color 0.3s ease;
   }
+  
+  .star.selected {
+    color: #f3c623; /* Màu vàng khi được chọn */
+  }
+  
 
   /* Nút Submit Review */
 .submit-review {
@@ -436,10 +442,20 @@
     color: #fff;
   }
   
-  .review-rating .star {
-    color: #f3c623;
-    margin-right: 5px;
-  }
+  
+.review-rating .star {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.review-rating .star.filled {
+  color: #f3c623; /* Màu vàng cho các sao được đánh giá */
+}
+
+.review-rating .star.empty {
+  color: #ccc; /* Màu xám cho các sao chưa được đánh giá */
+}
+
   
   .similar-dish {
     text-align: center;
