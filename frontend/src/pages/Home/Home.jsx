@@ -4,10 +4,47 @@ import axios from 'axios'; // Import Axios
 import { assets } from '../../assets/assets';
 import './Home.css';
 
+
+const priceOptions = [
+  {
+    label: '<50k',
+    beginPrice: 0,
+    endPrice: 50000,
+  },
+  {
+    label: '50-100k',
+    beginPrice: 50000,
+    endPrice: 100000,
+  },
+  {
+    label: '100-200k',
+    beginPrice: 100000,
+    endPrice: 200000,
+  },
+  {
+    label: '200-500k',
+    beginPrice: 200000,
+    endPrice: 500000,
+  },
+  {
+    label: '500-1000k',
+    beginPrice: 500000,
+    endPrice: 1000000,
+  },
+  {
+    label: '>1000k',
+    beginPrice: 1000000,
+    endPrice: 999999999,
+  },
+]
+
+
 const Home = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedTaste, setSelectedTaste] = useState([]);
-  const [selectedPrices, setSelectedPrices] = useState([]);
+  const [selectedPrice, setSelectedPrice] = useState();
+  const [beginPrice, setBeginPrice] = useState(0);
+  const [endPrice, setEndPrice] = useState(999999999);
   const [products, setProducts] = useState([]); // State cho danh sách món ăn
   const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
   const [error, setError] = useState(null); // Trạng thái lỗi
@@ -88,11 +125,12 @@ const Home = () => {
   const handleSubmitFilter = () => {
     console.log('Selected Categories:', selectedCategories);
     console.log('Selected Taste:', selectedTaste);
-    console.log('Selected Prices:', selectedPrices);
     const filterParams = new URLSearchParams();
-    selectedCategories.forEach((category) => filterParams.append('category', category));
-    selectedTaste.forEach((taste) => filterParams.append('taste', taste));
-    selectedPrices.forEach((price) => filterParams.append('price', price));
+    selectedCategories.forEach((category) => filterParams.append('categoryId', category));
+    selectedTaste.forEach((taste) => filterParams.append('flavor', taste));
+    filterParams.append('beginPrice', beginPrice);
+    filterParams.append('endPrice', endPrice);
+    // selectedPrices.forEach((price) => filterParams.append('price', price));
     const filterProducts = async () => {
       try {
         setLoading(true);
@@ -135,9 +173,9 @@ const Home = () => {
                     <div className="filter-options">
                     {['軽食', '朝食', '昼食', '夕食', 'デザート'].map((category, index) => (
                       <div
-                      className={`filter-option ${selectedCategories.includes(index) ? 'filter-active' : ''}`}
-                      key={index}
-                      onClick={() => toggleFilter(selectedCategories, setSelectedCategories, index)}
+                      className={`filter-option ${selectedCategories.includes(index + 1) ? 'filter-active' : ''}`}
+                      key={index + 1}
+                      onClick={() => toggleFilter(selectedCategories, setSelectedCategories, index + 1)}
                       >
                       <span>{category}</span>
                       </div>
@@ -168,16 +206,28 @@ const Home = () => {
             <div className="filter-items">
               <div className="filter-title">
                 <span className="filter-type">価格帯</span>
-                <span className="filter-clear" onClick={() => setSelectedPrices([])}>すべてクリア</span>
+                <span className="filter-clear" 
+                  onClick={() => {
+                    setSelectedPrice()
+                    setBeginPrice(0)
+                    setEndPrice(999999999)
+                  }}
+                >
+                  クリア
+                  </span>
               </div>
               <div className="filter-options">
-                {['<50k', '50-100k', '100-200k', '200-500k', '500-1000k', '>1000k'].map((price) => (
+                {priceOptions.map((price,index) => (
                   <div
-                    className={`filter-option ${selectedPrices.includes(price) ? 'filter-active' : ''}`}
-                    key={price}
-                    onClick={() => toggleFilter(selectedPrices, setSelectedPrices, price)}
+                    className={`filter-option ${price == selectedPrice ? 'filter-active' : ''}`}
+                    key={index}
+                    onClick={() => {
+                      setSelectedPrice(price)
+                      setBeginPrice(price.beginPrice)
+                      setEndPrice(price.endPrice)
+                    }}
                   >
-                    <span>{price}</span>
+                    <span>{price.label}</span>
                   </div>
                 ))}
               </div>
@@ -208,7 +258,7 @@ const Home = () => {
                   <img src={product.image} alt={product.name} />
                 </div>
                 <div className="product-content">
-                  <span className="price">${product.price}</span>
+                  <span className="price">{product.price} VND</span>
                   <a href="#" className="product-name">{product.name}</a>
                   <span className="product-description">{product.description}</span>
                 </div>

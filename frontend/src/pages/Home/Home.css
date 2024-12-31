@@ -106,7 +106,7 @@ div#content {
 .filter-title {
     display: flex;
     justify-content: space-between;
-    margin-right: 90px;
+    margin-bottom: 10px;
 }
 
 .filter-clear {
@@ -118,14 +118,13 @@ div#content {
 }
 
 .filter-options {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .filter-option {
-    min-width: 110px;
-    max-width: 115px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

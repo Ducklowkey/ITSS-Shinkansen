@@ -36,7 +36,9 @@ import Mail from './Mail_icon.png'
 import Name from './Name_icon.png'
 import Phone from './Phone_icon.png'
 import share_button from './share_button.png'
-
+import heart from "./heart-svgrepo-com.svg"
+import heartBlank from "./heart-blank.svg"
+import shareIcon from "./share-icon.svg"
 export const assets = {
     logo,
     Logofull,
@@ -71,7 +73,10 @@ export const assets = {
     Mail,
     Name,
     Phone,
-    share_button
+    share_button,
+    heart,
+    heartBlank,
+    shareIcon
 }
 
 export const restaurants = [

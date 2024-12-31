@@ -18,6 +18,7 @@ const User = () => {
           const response = await axios.get(`${API_URL}/posts/liked/${user_id}`);
           console.log(response.data);
           setFavorites(response.data); // Lưu danh sách món yêu thích vào state
+          localStorage.setItem('favorites', JSON.stringify(response.data.map(dish => dish.id)));
           setLoading(false); // Tắt trạng thái loading
         } catch (err) {
           console.error('Error fetching favorite dishes:', err);
@@ -36,6 +37,28 @@ const User = () => {
         document.body.style.backgroundColor = null;
       }
     },[]);
+
+    const handleRemoveFavorite = async (dishId) => {
+      try {
+        // Gửi yêu cầu DELETE với dữ liệu trong body
+        const response = await axios.delete(`${API_URL}/posts/like`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          data: { 
+            userId: user_id,  // Thay thế userId với id thực tế (ví dụ: lấy từ localStorage)
+            postId: dishId // Thay thế dishId với postId của món ăn
+          }
+        });
+    
+        // Xoá món khỏi danh sách yêu thích sau khi yêu cầu thành công
+        setFavorites(favorites.filter(fav => fav.id !== dishId)); 
+        console.log('Successfully removed the dish from favorites');
+      } catch (err) {
+        console.error('Error removing favorite:', err);
+        alert('Không thể xóa món yêu thích');
+      }
+    };
 
     return (
     <div className="container" style={{marginTop: '20px'}}>

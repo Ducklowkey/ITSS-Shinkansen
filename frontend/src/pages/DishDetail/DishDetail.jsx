@@ -41,7 +41,6 @@ const DishDetail = () => {
         const response = await axios.get(`http://localhost:9002/posts/${dishId}`);
         setDish(response.data);
         console.log(response.data);
-        setIsFavorite(response.data.isFavorite || false);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching dish details:', err);
@@ -61,9 +60,27 @@ const DishDetail = () => {
       }
     };
 
+    const checkFavorite = async () => {
+      try {
+        const response = await axios.get(`http://localhost:9002/posts/liked/${user_id}`);
+        const isFavoriteDish = response.data.some(favoriteDish => favoriteDish.id === Number(dishId));
+        setIsFavorite(isFavoriteDish);
+        setLoading(false); // Tắt trạng thái loading
+      } catch (err) {
+        console.error('Error fetching favorite dishes:', err);
+        setError('Có lỗi xảy ra khi tải danh sách món yêu thích. Vui lòng thử lại sau.');
+        setLoading(false);
+      }
+    };
+
+
+
+
+
     fetchDishDetail();
     fetchReviews();
     japaneseDish();
+    checkFavorite();
   }, [dishId]);
 
   const handleFavoriteClick = async () => {
@@ -76,20 +93,29 @@ const DishDetail = () => {
       alert('Món ăn không hợp lệ.');
       return;
     }
-  
-    try {
-      const response = await axios.post(`http://localhost:9002/posts/like`, { 
-        userId: Number(user_id),
-        postId: Number(dishId)
+    console.log(isFavorite);
+    if(isFavorite) {
+      const response = await axios.delete(`http://localhost:9002/posts/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: { 
+          userId: Number(user_id),  // Thay thế userId với id thực tế (ví dụ: lấy từ localStorage)
+          postId: Number(dishId) // Thay thế dishId với postId của món ăn
+        }
       });
-
-      if (response.status === 200) {
-        setIsFavorite(prevState => !prevState);
+    } else {
+      try {
+        const response = await axios.post(`http://localhost:9002/posts/like`, { 
+          userId: Number(user_id),
+          postId: Number(dishId)
+        });
+      } catch (error) {
+        console.error('Error liking dish:', error);
+        alert('Không thể thêm vào danh sách yêu thích. Vui lòng thử lại.');
       }
-    } catch (error) {
-      console.error('Error liking dish:', error);
-      alert('Không thể thêm vào danh sách yêu thích. Vui lòng thử lại.');
     }
+    setIsFavorite(prevState => !prevState);
   };
 
   // Gửi review mới
@@ -141,14 +167,16 @@ const DishDetail = () => {
         <h2 className="dish-name">{dish.name}</h2>
         <div className="action-buttons">
           <button className="favorite-button" onClick={handleFavoriteClick}>
-            <img src={isFavorite ? assets.bookmark_filled : assets.bookmark} alt="Favorite" />
+            <img src={isFavorite ? assets.heart : assets.heartBlank} alt="Favorite" />
+            好む
           </button>
           <button className="share-button" onClick={() => navigator.share({
             title: dish.name,
             text: 'Check out this dish!',
             url: window.location.href
           }).catch((err) => console.error('Error sharing:', err))}>
-            <img src={assets.share_button} alt="Share" />
+            <img src={assets.shareIcon} alt="Share" />
+            シェア
           </button>
         </div>
       </div>

@@ -35,13 +35,25 @@
   transform: translateX(-50%);
 }
 
-.back-button, .favorite-button {
+.back-button {
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.2s;
  
+}
+
+.favorite-button {
+  background-color: #D94259;
+  border: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 3px 10px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .back-button:hover, .favorite-button:hover {
@@ -63,8 +75,7 @@
 
 .favorite-button {
   margin-left: auto;
-  color: red;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin-right: 20px;
 }
 
@@ -75,7 +86,14 @@
 }
 
 .share-button {
-  background-color: transparent;
+  background-color: #D94259;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 10px;
+  gap: 10px;
+  font-size: 1.2rem;
   border: none;
   cursor: pointer;
   transition: transform 0.2s;

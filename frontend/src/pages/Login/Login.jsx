@@ -57,6 +57,11 @@ const Login = () => {
     } finally {
       setLoading(false); // Tắt trạng thái loading
     }
+
+
+    const response = await axios.get(`${API_URL}/posts/liked/${user_id}`);
+    localStorage.setItem('favorites', JSON.stringify(response.data.map(dish => dish.id)));
+
   };
 
   return (
