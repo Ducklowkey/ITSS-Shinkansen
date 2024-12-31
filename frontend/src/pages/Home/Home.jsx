@@ -171,7 +171,7 @@ const Home = () => {
                     <span className="filter-clear" onClick={() => setSelectedCategories([])}>すべてクリア</span>
                     </div>
                     <div className="filter-options">
-                    {['軽食', '朝食', '昼食', '夕食', 'デザート'].map((category, index) => (
+                    {['朝食', '昼食', ' 軽食', '夕食', 'デザート'].map((category, index) => (
                       <div
                       className={`filter-option ${selectedCategories.includes(index + 1) ? 'filter-active' : ''}`}
                       key={index + 1}
