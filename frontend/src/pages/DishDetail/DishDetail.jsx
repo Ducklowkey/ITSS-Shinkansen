@@ -212,13 +212,13 @@ const DishDetail = () => {
               <span className="detail-label">料理名</span>
               <span className="detail-value" style={{fontWeight: 600}}>{dish.name_jp}</span>
             </div>
-            <div className="detail-row">
-              <span className="detail-label">説明</span>
+            <div className="detail-row" style={{alignItems: 'flex-start'}}>
+              <span className="detail-label">味説明</span>
               <span className="detail-value">{dish.flavorDetail || 'Chưa có mô tả'}<span className='flavor-tag'>{flavorTypes[dish.flavorId - 1]}</span></span>
             </div>
             <div className="detail-row">
               <span className="detail-label">価格</span>
-              <span className="detail-value">{dish.price ? `${dish.price} VND` : 'Không có giá'}</span>
+              <span className="detail-value">{dish.price ? `${dish.price} ドン` : 'Không có giá'}</span>
             </div>
           </div>
         </div>
@@ -295,23 +295,23 @@ const DishDetail = () => {
                 placeholder="ここにレビューを追加してください"
                 
               />
-              <div className="review-stars">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <span
-                      key={star}
-                      className={`star ${selectedStars >= star ? 'selected' : ''}`}
-                      onClick={() => setSelectedStars(star)}
-                    >
-                      ★
-                    </span>
-                  ))}
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                <div className="review-stars">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span
+                        key={star}
+                        className={`star ${selectedStars >= star ? 'selected' : ''}`}
+                        onClick={() => setSelectedStars(star)}
+                      >
+                        ★
+                      </span>
+                    ))}
+                </div>
+
+              <button onClick={handleSubmitReview} className="submit-review">Submit</button>
               </div>
-
-
-
             </div>
           </div>
-          <button onClick={handleSubmitReview} className="submit-review">Submit</button>
           
           
         </div>

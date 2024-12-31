@@ -88,7 +88,7 @@ const Favorite = () => {
             <div className="favorite-item-info">
               <h3>{dish.name}</h3>
               <p>{dish.making || 'Chưa có mô tả'}</p>
-              <p>{dish.price ? `${dish.price} VND` : 'Không có giá'}</p>
+              <p>{dish.price ? `${dish.price} ドン` : 'Không có giá'}</p>
             </div>
             <button
               className="remove-favorite-btn"
