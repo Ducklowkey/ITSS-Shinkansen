@@ -19,7 +19,7 @@ const DishDetail = () => {
   const dishId = queryParams.get('id');
   const user_id = localStorage.getItem('user_id');
   const user_name = localStorage.getItem('user_name');  // Thêm user_name nếu có lưu trong localStorage
-
+  const flavorTypes = ['甘味', '辛い ', '酸味', '苦い','塩辛い'];
 
   const fetchReviews = async () => {
     if (!dishId) return;
@@ -52,7 +52,6 @@ const DishDetail = () => {
     const japaneseDish = async () => {
       try {
         const response = await axios.get(`http://localhost:9002/posts/sameCourse/${dishId}`);
-        console.log(response.data);
         setSimilarDish(response.data);
       } catch (err) {
         console.error('Error fetching dish details:', err);
@@ -215,7 +214,7 @@ const DishDetail = () => {
             </div>
             <div className="detail-row">
               <span className="detail-label">説明</span>
-              <span className="detail-value">{dish.flavor || 'Chưa có mô tả'}</span>
+              <span className="detail-value">{dish.flavorDetail || 'Chưa có mô tả'}<span className='flavor-tag'>{flavorTypes[dish.flavorId - 1]}</span></span>
             </div>
             <div className="detail-row">
               <span className="detail-label">価格</span>
