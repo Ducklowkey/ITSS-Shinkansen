@@ -14,19 +14,24 @@ const DishDetail = () => {
   const [selectedStars, setSelectedStars] = useState(0);
   const [similarDish, setSimilarDish] = useState();
   const location = useLocation();
-
+  const [averageRate, setAverageRate] = useState(5);
   const queryParams = new URLSearchParams(location.search);
   const dishId = queryParams.get('id');
   const user_id = localStorage.getItem('user_id');
   const user_name = localStorage.getItem('user_name');  // Thêm user_name nếu có lưu trong localStorage
   const flavorTypes = ['甘味', '辛い ', '酸味', '苦い','塩辛い'];
-
+  
   const fetchReviews = async () => {
     if (!dishId) return;
 
     try {
       const response = await axios.get(`http://localhost:9002/posts/comment/${dishId}`);
       setReviews(response.data);
+      console.log(response.data);
+      const totalRate = response.data.reduce((acc, review) => acc + review.rate, 0);
+      const average = (totalRate / response.data.length).toFixed(1);
+      setAverageRate(average);
+      console.log(average);
     } catch (err) {
       console.error('Error fetching reviews:', err);
     }
@@ -219,6 +224,10 @@ const DishDetail = () => {
             <div className="detail-row">
               <span className="detail-label">価格</span>
               <span className="detail-value">{dish.price ? `${dish.price} ドン` : 'Không có giá'}</span>
+            </div>
+            <div className="detail-row">
+              <span className="detail-label">評価</span>
+              <span className="detail-value">{averageRate != "NaN" ? averageRate : 5} <span style={{color: "#f3c623"}}>★</span></span>
             </div>
           </div>
         </div>
