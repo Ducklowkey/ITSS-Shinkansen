@@ -1,135 +1,128 @@
 /* Phần chính của món ăn */
 .dish-card {
-  display: flex;
-  flex-direction: column;
-  
+    display: flex;
+    flex-direction: column;
 
-  margin-top: 60px;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
+    margin-top: 60px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 .dish-container {
-  display: flex;
-  flex-direction: column;
-  
+    display: flex;
+    flex-direction: column;
 
-  margin: 60px 100px 0 100px;
-  overflow: hidden;
-
+    margin: 60px 100px 0 100px;
+    overflow: hidden;
 }
 
 /* Header bao gồm tên món ăn và các nút */
 .dish-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
 }
 
 .dish-header h2 {
-  position: absolute;
-  left: 50%;
-  font-size: 50px;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    font-size: 50px;
+    transform: translateX(-50%);
 }
 
 .back-button {
-  background-color: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.2s;
- 
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
 .favorite-button {
-  background-color: #D94259;
-  border: none;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 3px 10px;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
+    background-color: #d94259;
+    border: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 3px 10px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.back-button:hover, .favorite-button:hover {
-  transform: scale(1.2); /* Hiệu ứng phóng to khi di chuột */
+.back-button:hover,
+.favorite-button:hover {
+    transform: scale(1.2); /* Hiệu ứng phóng to khi di chuột */
 }
 
 .dish-name {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
-  flex-grow: 1;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
 }
 
 /* Đảm bảo các nút không chồng lên tên món ăn */
 .back-button {
-  margin-right: auto;
+    margin-right: auto;
 }
 
 .favorite-button {
-  margin-left: auto;
-  font-size: 1.4rem;
-  margin-right: 20px;
+    margin-left: auto;
+    font-size: 1.4rem;
+    margin-right: 20px;
 }
 
 .action-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Adjust spacing between buttons */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between buttons */
 }
 
 .share-button {
-  background-color: #D94259;
-  display: flex;
-  align-items: center;
-  color: white;
-  padding: 3px 10px;
-  border-radius: 10px;
-  gap: 10px;
-  font-size: 1.2rem;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s;
+    background-color: #d94259;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    gap: 10px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
-
 
 .share-button:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
-
 
 /* Các phần nội dung bên dưới */
 .dish-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    margin: 20px 0px;
 }
 
 /* Hình ảnh món ăn */
 .dish-image img {
-  width: 600px;
-  height: auto;
-  border-radius: 20px;
-  object-fit: cover;
+    width: 600px;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 /* Thông tin món ăn */
 .dish-info {
-  background-color: #fdfdfd;
-  padding: 16px;
-  width: 600px;
+    background-color: #fdfdfd;
+    padding: 16px;
+    width: 600px;
 }
-
 
 .dish-details {
     display: flex;
@@ -159,29 +152,28 @@
     font-size: 1.5rem;
 }
 
-.recipe-name{
+.recipe-name {
     padding-top: 30px;
     text-align: center;
     font-size: 2rem;
 }
 
 .recipe-content {
-  font-size: 16px;
-  margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .ingredient-list {
     margin-top: 10px;
     list-style-type: disc; /* Dấu chấm tròn */
     padding-left: 20px; /* Cách lề trái */
-  }
+}
 
-.HowToDo{
+.HowToDo {
     margin-top: 20px;
     padding-left: 40px;
-}  
+}
 .DotList {
-    
     list-style-type: disc; /* Chỉ định dấu chấm đen */
     margin-left: 20px; /* Tạo lề trái cho danh sách con */
     padding-left: 0; /* Đảm bảo không có padding mặc định */
@@ -193,7 +185,7 @@
     list-style-type: decimal; /* Hiển thị số thứ tự cho danh sách chính */
     padding-left: 20px;
 }
-.video{
+.video {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -204,33 +196,31 @@
     margin-top: 40px;
     padding: 20px;
     background-color: #f9f9f9;
-  }
-  
-  .res-title {
+}
+
+.res-title {
     font-size: 42px;
     font-weight: normal;
     margin-bottom: 10px;
     text-align: center;
     margin-top: 10px;
-  }
-  
-  .res-description {
-    
+}
+
+.res-description {
     font-size: 14px;
     color: #555;
     text-align: center;
     margin-bottom: 50px;
-    
-  }
-  
-  .res-suggest {
+}
+
+.res-suggest {
     display: flex;
     flex-wrap: wrap; /* Để các card xuống dòng khi không đủ không gian */
     justify-content: space-between; /* Giãn cách đều giữa các card */
     gap: 20px; /* Khoảng cách giữa các card */
-  }
-  
-  .card {
+}
+
+.card {
     flex: 0 1 calc(25% - 20px); /* Mỗi card chiếm 25% chiều rộng trừ đi khoảng cách */
     box-sizing: border-box; /* Bao gồm cả padding và border trong chiều rộng card */
     border-radius: 10px;
@@ -238,68 +228,71 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     margin-bottom: 20px; /* Khoảng cách giữa các hàng */
-  }
-  
-  
-  .card img {
+}
+
+.card img {
     width: 100%;
     height: 210px;
     object-fit: cover;
-  }
-  
-  .card-content {
+}
+
+.card-content {
     padding: 15px;
-  }
-  
-  .card-title {
+}
+
+.card-title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  .card-address {
+}
+
+.card-address {
     font-size: 14px;
     color: #555;
-  }
-  
-  .card-hotline {
+}
+
+.card-hotline {
     font-size: 14px;
     color: #555;
-  }
-  
-  /* comment */
-  /* Container tổng */
+}
+
+/* comment */
+/* Container tổng */
 .review-container {
+    display: flex;
+    align-items: start;
     background-color: #3c3c3c;
     color: #fff;
     padding: 20px 20px 20px 30px;
     font-family: Arial, sans-serif;
     display: flex;
-  }
-  
-  /* Khu vực thêm đánh giá */
-  .add-review {
+}
+
+/* Khu vực thêm đánh giá */
+.add-review {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    flex:1;
+    flex: 1;
     flex-wrap: wrap;
     flex-direction: column;
-  }
+    margin-top: 80px;
+}
 
-  .add-review-header {
+.add-review-header {
     display: flex;
     align-items: center;
-  }
-  
-  .user-avatar {
+}
+
+.user-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin-right: 20px;
-  }
-  
-  .review-input {
+    margin-bottom: 140px;
+}
+
+.review-input {
     background-color: #fff;
     color: #aaa;
     padding: 30px;
@@ -308,9 +301,9 @@
     margin-right: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
-  }
+}
 
-  .review-input input {
+.review-input input {
     width: 100%; /* Chiếm toàn bộ chiều rộng của phần tử cha */
     height: 80px; /* Tăng chiều cao cho input */
     padding: 10px 15px; /* Tăng khoảng cách bên trong để text dễ nhìn */
@@ -321,15 +314,15 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
     outline: none; /* Loại bỏ viền khi focus */
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà khi tương tác */
-  }
-  
-  .review-input input:focus {
+}
+
+.review-input input:focus {
     border-color: #007bff; /* Màu viền xanh khi input được focus */
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Hiệu ứng ánh sáng khi focus */
-  }
+}
 
-  .review-input::before {
-    content: ''; /* Bắt buộc phải có */
+.review-input::before {
+    content: ""; /* Bắt buộc phải có */
     position: absolute;
     top: 20px; /* Điều chỉnh vị trí theo chiều dọc */
     left: -10px; /* Điều chỉnh vị trí ngang để tam giác ở ngoài box */
@@ -338,152 +331,148 @@
     border-top: 10px solid transparent; /* Cạnh trên của tam giác */
     border-bottom: 10px solid transparent; /* Cạnh dưới của tam giác */
     border-right: 10px solid #fff; /* Màu tam giác khớp với màu nền của box */
-  }
-  
-  .review-stars {
+}
+
+.review-stars {
     display: flex;
     margin-top: 10px;
-  }
-  
-  .star {
+}
+
+.star {
     font-size: 24px;
     color: #ccc; /* Màu xám nhạt ban đầu */
     margin-right: 5px;
     cursor: pointer;
     transition: color 0.3s ease;
-  }
-  
-  .star.selected {
-    color: #f3c623; /* Màu vàng khi được chọn */
-  }
-  
+}
 
-  /* Nút Submit Review */
+.star.selected {
+    color: #f3c623; /* Màu vàng khi được chọn */
+}
+
+/* Nút Submit Review */
 .submit-review {
-  background-color: #28a745; /* Màu nền xanh lá cây */
-  color: white;
-  font-size: 18px;
-  padding: 6px 15px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease; 
-  margin-top: 20px;
-  max-width: 120px; 
-  text-align: center;
-  display: block; 
-  margin-left: auto; 
-  line-height: 1.5;
+    background-color: #28a745; /* Màu nền xanh lá cây */
+    color: white;
+    font-size: 18px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    max-width: 120px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    line-height: 1.5;
 }
 
 .submit-review:hover {
-  background-color: #218838; /* Màu nền khi hover */
-  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+    background-color: #218838; /* Màu nền khi hover */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 
 .submit-review:active {
-  background-color: #1e7e34; /* Màu nền khi nhấn */
-  transform: scale(1); /* Khôi phục kích thước khi nhấn */
+    background-color: #1e7e34; /* Màu nền khi nhấn */
+    transform: scale(1); /* Khôi phục kích thước khi nhấn */
 }
 
 .submit-review:disabled {
-  background-color: #ccc; /* Màu nền khi nút bị vô hiệu hóa */
-  cursor: not-allowed; /* Đổi con trỏ thành không cho phép khi disabled */
+    background-color: #ccc; /* Màu nền khi nút bị vô hiệu hóa */
+    cursor: not-allowed; /* Đổi con trỏ thành không cho phép khi disabled */
 }
 
-  
-  /* Danh sách đánh giá */
-  .review-list {
+/* Danh sách đánh giá */
+.review-list {
     margin-top: 20px;
-    flex:1;
-  }
-  
-  .review-item {
+    flex: 1;
+}
+
+.review-item {
     background-color: #2c2c2c;
     border-radius: 10px;
     padding: 15px;
     margin: 60px 60px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .review-header {
+}
+
+.review-header {
     display: flex;
     align-items: center;
     margin: 10px 20px;
-  }
+}
 
-  .review-footer {
+.review-footer {
     display: flex;
     margin: 0px 20px;
-  }
-  
-  .review-avatar {
+}
+
+.review-avatar {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     margin-right: 15px;
-  }
-  
-  .review-name {
+}
+
+.review-name {
     font-size: 22px;
     font-weight: bold;
     color: #fff;
-  }
-  
-  .review-date {
+}
+
+.review-date {
     font-size: 12px;
     color: rgb(255, 255, 255);
     margin-left: auto;
-  }
-  
-  .review-content {
+}
+
+.review-content {
     font-size: 18px;
     line-height: 1.6;
     margin: 20px 20px 40px 20px;
     color: #fff;
-  }
-  
-  
+}
+
 .review-rating .star {
-  font-size: 20px;
-  margin-right: 5px;
+    font-size: 20px;
+    margin-right: 5px;
 }
 
 .review-rating .star.filled {
-  color: #f3c623; /* Màu vàng cho các sao được đánh giá */
+    color: #f3c623; /* Màu vàng cho các sao được đánh giá */
 }
 
 .review-rating .star.empty {
-  color: #ccc; /* Màu xám cho các sao chưa được đánh giá */
+    color: #ccc; /* Màu xám cho các sao chưa được đánh giá */
 }
 
-  
-  .similar-dish {
+.similar-dish {
     text-align: center;
     padding: 10px 70px;
-  }
+}
 
-  .similar-dish img {
+.similar-dish img {
     border-radius: 20px;
     width: 500px;
-  }
+}
 
-  .similar-dish h2 {
+.similar-dish h2 {
     margin-bottom: 30px;
-  }
+}
 
-  .similar-dish div {
+.similar-dish div {
     display: flex;
     justify-content: center;
     gap: 30px;
-  }
+}
 
-  .flavor-tag {
+.flavor-tag {
     font-size: 1.2rem;
-    border: 2px solid #D94259;
-    color: #D94259;
+    border: 2px solid #d94259;
+    color: #d94259;
     font-weight: 600;
     border-radius: 5px;
     margin-left: 10px;
     padding: 5px 10px;
-  }
+}
