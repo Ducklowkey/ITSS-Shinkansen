@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios'; // Import Axios
 import { assets } from '../../assets/assets';
@@ -7,32 +7,32 @@ import './Home.css';
 
 const priceOptions = [
   {
-    label: '<50k',
+    label: '<５万',
     beginPrice: 0,
     endPrice: 50000,
   },
   {
-    label: '50-100k',
+    label: '5万~10万',
     beginPrice: 50000,
     endPrice: 100000,
   },
   {
-    label: '100-200k',
+    label: '10万~20万',
     beginPrice: 100000,
     endPrice: 200000,
   },
   {
-    label: '200-500k',
+    label: '20万~50万',
     beginPrice: 200000,
     endPrice: 500000,
   },
   {
-    label: '500-1000k',
+    label: '50万~100万',
     beginPrice: 500000,
     endPrice: 1000000,
   },
   {
-    label: '>1000k',
+    label: '>100万',
     beginPrice: 1000000,
     endPrice: 999999999,
   },
